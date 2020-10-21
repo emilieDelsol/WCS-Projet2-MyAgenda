@@ -15,7 +15,8 @@ namespace projet2Appointment.Controllers
 
         [HttpGet]
         public List<Appointment> Get()
-        {   
+        {
+            myList.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
             return myList;
         }
 
