@@ -39,7 +39,7 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpPost]
-        public string InsertAppointment(Appointment appointment)
+        public Appointment InsertAppointment(Appointment appointment)
         {
            Appointment myAppointment = new Appointment();
             myAppointment.Id = appointment.Id;
@@ -47,7 +47,7 @@ namespace projet2Appointment.Controllers
             myAppointment.BeginDate = appointment.BeginDate;
             myAppointment.EndDate = appointment.EndDate;
             myAppointment.Description = appointment.Description;
-            return "congrats you add a new rdv";
+            return myAppointment;
         }
     }
 }
