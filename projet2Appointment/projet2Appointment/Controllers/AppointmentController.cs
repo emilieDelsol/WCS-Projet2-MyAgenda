@@ -16,7 +16,6 @@ namespace projet2Appointment.Controllers
         [HttpGet]
         public List<Appointment> Get()
         {
-            
 
 
             myList.Add(new Appointment
@@ -39,10 +38,10 @@ namespace projet2Appointment.Controllers
             return myList;
         }
 
-        /*[HttpPost]
+        [HttpPost]
         public string InsertAppointment(Appointment appointment)
         {
-           Appointment myList. = new Appointment();
+           Appointment myAppointment = new Appointment();
             myAppointment.Id = appointment.Id;
             myAppointment.Rdv = appointment.Rdv;
             myAppointment.BeginDate = appointment.BeginDate;
@@ -50,7 +49,5 @@ namespace projet2Appointment.Controllers
             myAppointment.Description = appointment.Description;
             return "congrats you add a new rdv";
         }
-
-        }*/
     }
 }
