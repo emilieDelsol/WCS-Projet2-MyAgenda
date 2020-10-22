@@ -34,9 +34,10 @@ namespace projet2Appointment.Controllers
             return myAppointment;
         }
 
-        [Route("[controller]/modify")]
-        [HttpPost]       
         
+        [HttpPost]       
+        [Route("[controller]/modify")]
+
         public List<Appointment> ModifyAppointment(Appointment modifyappointment)
         {                         
 
