@@ -33,5 +33,16 @@ namespace projet2Appointment.Controllers
             myList.Add(myAppointment);
             return myAppointment;
         }
+
+        [Route("[controller]/modify")]
+        [HttpPost]       
+        
+        public List<Appointment> ModifyAppointment(Appointment modifyappointment)
+        {                         
+
+            myList [modifyappointment.Id] = InsertAppointment(modifyappointment);
+            return myList;
+           
+        }
     }
 }
