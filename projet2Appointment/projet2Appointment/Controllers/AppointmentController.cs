@@ -40,5 +40,12 @@ namespace projet2Appointment.Controllers
             myList.Add(myAppointment);
             return myAppointment;
         }
+
+        [HttpDelete]
+        public List<Appointment> DeleteAppointment(Appointment appointementToDelete)
+        {
+            myList.RemoveAt(appointementToDelete.Id);
+            return myList;
+        }
     }
 }
