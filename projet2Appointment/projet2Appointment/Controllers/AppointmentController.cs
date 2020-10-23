@@ -31,7 +31,7 @@ namespace projet2Appointment.Controllers
         {
             Appointment myAppointment = new Appointment
             {
-                
+
                 Rdv = appointment.Rdv,
                 BeginDate = appointment.BeginDate,
                 EndDate = appointment.EndDate,
@@ -42,16 +42,6 @@ namespace projet2Appointment.Controllers
         }
 
 
-        
-        [HttpPost]       
-        [Route("[controller]/modify")]
-
-        public List<Appointment> ModifyAppointment(Appointment modifyappointment)
-        {                         
-
-            myList [modifyappointment.Id] = InsertAppointment(modifyappointment);
-            return myList;
-           
         [HttpDelete]
         public List<Appointment> DeleteAppointment(Appointment appointementToDelete)
         {
@@ -59,4 +49,6 @@ namespace projet2Appointment.Controllers
             return myList;
         }
     }
+
 }
+
