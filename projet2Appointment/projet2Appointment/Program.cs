@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using 
+
 
 namespace projet2Appointment
 {
@@ -15,7 +15,6 @@ namespace projet2Appointment
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            myList.InsertAppointment
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

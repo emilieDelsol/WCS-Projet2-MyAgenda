@@ -29,38 +29,21 @@ namespace projet2Appointment.Controllers
         [HttpPost]
         public Appointment InsertAppointment(Appointment appointment)
         {
-                Appointment myAppointment = new Appointment
-                {
-                    Rdv = appointment.Rdv,
-                    BeginDate = appointment.BeginDate,
-                    EndDate = appointment.EndDate,
-                    Description = appointment.Description
-                };
-
-            if (Appointment.dateCheck = true)
+            Appointment myAppointment = new Appointment
             {
-                myList.Add(myAppointment);
-                return myAppointment;
-            }
+                Rdv = appointment.Rdv,
+                BeginDate = appointment.BeginDate,
+                EndDate = appointment.EndDate,
+                Description = appointment.Description
+            };
+
+            
+            myList.Add(myAppointment);
+            return myAppointment;
+            
         }
 
-        public bool dateCheck(DateTime BeginDate, DateTime EndDate)
-        {
-            bool result;
-            int Numresult = DateTime.Compare(BeginDate, EndDate);
-
-            if (Numresult < 1)
-                {
-                    result = true;
-                }
-
-            else
-            {
-                result = false;
-            }
-            return result; 
-
-        }
+       
 
 
         [HttpDelete]
