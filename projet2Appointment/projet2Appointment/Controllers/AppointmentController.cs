@@ -15,7 +15,14 @@ namespace projet2Appointment.Controllers
 
         [HttpGet]
         public List<Appointment> Get()
-        {   
+        {
+            myList.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
+            int i = 0;
+            foreach (Appointment appointment in myList)
+            {
+                appointment.Id = i;
+                i++;
+            }
             return myList;
         }
 
@@ -24,7 +31,6 @@ namespace projet2Appointment.Controllers
         {
                 Appointment myAppointment = new Appointment
                 {
-                    Id = appointment.Id,
                     Rdv = appointment.Rdv,
                     BeginDate = appointment.BeginDate,
                     EndDate = appointment.EndDate,
@@ -53,6 +59,17 @@ namespace projet2Appointment.Controllers
                 result = false;
             }
             return result; 
+
+        }
+
+
+        [HttpDelete]
+        public List<Appointment> DeleteAppointment(Appointment appointementToDelete)
+        {
+            myList.RemoveAt(appointementToDelete.Id);
+            return myList;
         }
     }
+
 }
+

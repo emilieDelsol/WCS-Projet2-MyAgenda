@@ -18,7 +18,11 @@ namespace projet2Appointment
         public string Description { get; set; }
 
         public string InsertAppointment { get; set; }
-        
+
+        public List<Appointment> DeleteAppointment { get; set; }
+
+
+
 
     }
    
