@@ -43,7 +43,25 @@ namespace projet2Appointment.Controllers
             
         }
 
-       
+       [HttpPut]
+        public List<Appointment> ModifyAppointment(ReplaceAppointment modified)
+        {
+            ReplaceAppointment modifyAppointment = new ReplaceAppointment
+            {
+                IdReplace = modified.IdReplace,
+                RdvReplace = modified.RdvReplace,
+                BeginDateReplace = modified.BeginDateReplace,
+                EndDateReplace = modified.EndDateReplace,
+                DescriptionReplace = modified.DescriptionReplace,
+            };
+
+            myList[modifyAppointment.IdReplace].Rdv = modifyAppointment.RdvReplace;
+            myList[modifyAppointment.IdReplace].BeginDate = modifyAppointment.BeginDateReplace;
+            myList[modifyAppointment.IdReplace].EndDate = modifyAppointment.EndDateReplace;
+            myList[modifyAppointment.IdReplace].Description = modifyAppointment.DescriptionReplace;
+            return myList;
+        }
+
 
 
         [HttpDelete]
