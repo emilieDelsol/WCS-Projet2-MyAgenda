@@ -39,6 +39,8 @@ namespace projet2Appointment
             }
             
         }
+        
+
         public void SortByBeginDate(List<Appointment> list)
         {
             list.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));

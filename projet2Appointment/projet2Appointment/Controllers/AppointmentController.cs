@@ -51,14 +51,10 @@ namespace projet2Appointment.Controllers
         {
 
             List<Appointment> listFilterPerso = new List<Appointment>();
-            foreach (Appointment value in myList)
-            {
-                if (value.Perso == true)
-                {
-                    listFilterPerso.Add(value);
-                }
 
-            }
+            modifyList.SortByType(listFilterPerso, myList, "pro");
+            modifyList.SortByBeginDate(listFilterPerso);
+            modifyList.ChangeID(listFilterPerso);
             return listFilterPerso;
             
 
