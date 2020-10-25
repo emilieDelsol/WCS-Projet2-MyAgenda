@@ -46,7 +46,7 @@ namespace projet2Appointment
             list.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
         }
 
-        public void SortByType(List<Appointment> list, List<Appointment> mylist, string type)
+        public void filterByType(List<Appointment> list, List<Appointment> mylist, string type)
         {
 
             if (type == "pro")
