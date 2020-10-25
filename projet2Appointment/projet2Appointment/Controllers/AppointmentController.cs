@@ -12,10 +12,10 @@ namespace projet2Appointment.Controllers
     [Route("[controller]")]
     public class AppointmentController : ControllerBase
     {
-
-        private static List<Appointment> myList = new List<Appointment>();
         
-
+        private static List<Appointment> myList = new List<Appointment>();
+        public ModifyList modifyList = new ModifyList();
+        
         [HttpGet]
         
         public List<Appointment> GetList()
@@ -30,27 +30,22 @@ namespace projet2Appointment.Controllers
             return myList;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("filter/pro")]
 
         public List<Appointment> GetFilterPro()
         {
             
             List<Appointment> listFilter = new List<Appointment>();
-            foreach (Appointment value in myList)
-            {
-                if (value.Pro == true)
-                {
-                    listFilter.Add(value);
-                }
-                
-            }
-            
+
+            modifyList.SortByType(listFilter, myList, "pro");
+            modifyList.SortByBeginDate(listFilter);
+            modifyList.ChangeID(listFilter);
             return listFilter;
 
 
         }
 
-        [HttpGet("{id}/perso")]
+        [HttpGet("filter/perso")]
 
         public List<Appointment> GetFilterPerso()
         {
@@ -64,8 +59,8 @@ namespace projet2Appointment.Controllers
                 }
 
             }
-
             return listFilterPerso;
+            
 
 
         }
