@@ -42,6 +42,7 @@ namespace projet2Appointment
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
             });
         }
     }

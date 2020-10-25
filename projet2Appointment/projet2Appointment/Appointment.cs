@@ -21,9 +21,11 @@ namespace projet2Appointment
 
         public List<Appointment> DeleteAppointment { get; set; }
 
+        public bool Pro { get; set; }
 
+        public bool Perso { get; set; }
 
 
     }
-   
+       
 }
