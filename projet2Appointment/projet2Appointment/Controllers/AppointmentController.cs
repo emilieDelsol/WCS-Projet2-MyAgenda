@@ -37,7 +37,7 @@ namespace projet2Appointment.Controllers
             
             List<Appointment> listFilter = new List<Appointment>();
 
-            modifyList.FilterByType(listFilter, myList, "pro");
+            modifyList.filterByType(listFilter, myList, "pro");
             modifyList.SortByBeginDate(listFilter);
             modifyList.ChangeID(listFilter);
             return listFilter;
@@ -52,7 +52,7 @@ namespace projet2Appointment.Controllers
 
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            modifyList.filterByType(listFilterPerso, myList, "pro");
+            modifyList.filterByType(listFilterPerso, myList, "perso");
             modifyList.SortByBeginDate(listFilterPerso);
             modifyList.ChangeID(listFilterPerso);
             return listFilterPerso;
@@ -60,14 +60,15 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpGet("filter/date")]
-        public List<Appointment> GetFilterByDate()
+        public List<Appointment> GetFilterByDate(DateTime date)
         {
 
             List<Appointment> listFilterByDate = new List<Appointment>();
-
+            modifyList.filterBetweenDate(listFilterByDate, myList, date);
 
             return listFilterByDate;
         }
+
         [HttpPost]
         public Appointment InsertAppointment(Appointment appointment)
         {

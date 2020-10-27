@@ -73,6 +73,16 @@ namespace projet2Appointment
             }
             
         }
+        public void filterBetweenDate(List<Appointment> list, List<Appointment> myList, DateTime beginFilter)
+        {
+            foreach(Appointment appointment in myList)
+            {
+                if(appointment.BeginDate>=beginFilter)
+                {
+                    list.Add(appointment);
+                }
+            }
+        }
     }
 
 }
