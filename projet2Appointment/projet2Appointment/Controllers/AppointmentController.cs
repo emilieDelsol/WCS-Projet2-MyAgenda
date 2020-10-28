@@ -20,13 +20,9 @@ namespace projet2Appointment.Controllers
         
         public List<Appointment> GetList()
         {
-            myList.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
-            int i = 0;
-            foreach (Appointment appointment in myList)
-            {
-                appointment.Id = i;
-                i++;
-            }
+            modifyList.SortByBeginDate(myList);
+            modifyList.ChangeID(myList);
+            
             return myList;
         }
 
@@ -38,7 +34,8 @@ namespace projet2Appointment.Controllers
             List<Appointment> listFilter = new List<Appointment>();
 
             modifyList.SortByType(listFilter, myList, "pro");
-            
+            modifyList.SortByBeginDate(listFilter);
+
             return listFilter;
 
 
@@ -52,7 +49,8 @@ namespace projet2Appointment.Controllers
             List<Appointment> listFilterPerso = new List<Appointment>();
 
             modifyList.SortByType(listFilterPerso, myList, "perso");
-            
+            modifyList.SortByBeginDate(listFilterPerso);
+
             return listFilterPerso;
             
 
