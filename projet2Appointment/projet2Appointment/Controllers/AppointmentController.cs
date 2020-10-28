@@ -34,7 +34,14 @@ namespace projet2Appointment.Controllers
                 Rdv = appointment.Rdv,
                 BeginDate = appointment.BeginDate,
                 EndDate = appointment.EndDate,
-                Description = appointment.Description
+                Description = appointment.Description,
+                Address = appointment.Address,
+                Contact = appointment.Contact,
+                Email = appointment.Email,
+                Phone = appointment.Phone,
+                Importance = appointment.Importance,
+                Recurrence = appointment.Recurrence,
+                Reminder = appointment.Reminder
             };
 
             
@@ -43,7 +50,8 @@ namespace projet2Appointment.Controllers
             
         }
 
-       [HttpPut]
+
+        [HttpPut]
         public List<Appointment> ModifyAppointment(ReplaceAppointment modified)
         {
             ReplaceAppointment modifyAppointment = new ReplaceAppointment
@@ -53,16 +61,30 @@ namespace projet2Appointment.Controllers
                 BeginDateReplace = modified.BeginDateReplace,
                 EndDateReplace = modified.EndDateReplace,
                 DescriptionReplace = modified.DescriptionReplace,
+                AddressReplace = modified.AddressReplace,
+                ContactReplace = modified.ContactReplace,
+                EmailReplace = modified.EmailReplace,
+                PhoneReplace = modified.PhoneReplace,
+                ImportanceReplace = modified.ImportanceReplace,
+                RecurrenceReplace = modified.RecurrenceReplace,
+                ReminderReplace = modified.ReminderReplace,
             };
 
             myList[modifyAppointment.IdReplace].Rdv = modifyAppointment.RdvReplace;
             myList[modifyAppointment.IdReplace].BeginDate = modifyAppointment.BeginDateReplace;
             myList[modifyAppointment.IdReplace].EndDate = modifyAppointment.EndDateReplace;
             myList[modifyAppointment.IdReplace].Description = modifyAppointment.DescriptionReplace;
+            myList[modifyAppointment.IdReplace].Address = modifyAppointment.AddressReplace;
+            myList[modifyAppointment.IdReplace].Contact = modifyAppointment.ContactReplace;
+            myList[modifyAppointment.IdReplace].Email = modifyAppointment.EmailReplace;
+            myList[modifyAppointment.IdReplace].Phone = modifyAppointment.PhoneReplace;
+            myList[modifyAppointment.IdReplace].Importance = modifyAppointment.ImportanceReplace;
+            myList[modifyAppointment.IdReplace].Recurrence = modifyAppointment.RecurrenceReplace;
+            myList[modifyAppointment.IdReplace].Reminder = modifyAppointment.ReminderReplace;
             return myList;
         }
 
-
+       
 
         [HttpDelete]
         public List<Appointment> DeleteAppointment(Appointment appointementToDelete)
