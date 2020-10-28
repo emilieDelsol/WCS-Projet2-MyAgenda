@@ -73,11 +73,16 @@ namespace projet2Appointment
             }
             
         }
-        public void filterBetweenDate(List<Appointment> list, List<Appointment> myList, DateTime beginFilter)
+        public void filterByDate(List<Appointment> list, List<Appointment> myList, String beginFilter)
         {
             foreach(Appointment appointment in myList)
             {
-                if(appointment.BeginDate>=beginFilter)
+                if(appointment.BeginDate>=beginFilter) //a résoudre changement de type 
+                /*DateTime dateFromString =
+                    DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+                    Console.WriteLine(dateFromString.ToString());
+
+                 "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/ */
                 {
                     list.Add(appointment);
                 }
