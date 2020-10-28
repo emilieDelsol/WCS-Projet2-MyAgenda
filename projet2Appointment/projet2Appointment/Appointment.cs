@@ -51,9 +51,8 @@ namespace projet2Appointment
                 appointment.Id = i;
                 i++;
             }
-            
+
         }
-        
 
         public void SortByBeginDate(List<Appointment> list)
         {
@@ -85,37 +84,7 @@ namespace projet2Appointment
 
                 }
             }
-            
+
         }
-
     }
-
-    public class ReplaceAppointment
-    {
-        public int IdReplace { get; set; }
-
-        public string RdvReplace { get; set; }
-
-        public DateTime BeginDateReplace { get; set; }
-
-        public DateTime EndDateReplace { get; set; }
-
-        public string DescriptionReplace { get; set; }
-
-        public string AddressReplace { get; set; }
-
-        public string ContactReplace { get; set; }
-
-        public string EmailReplace { get; set; }
-
-        public string PhoneReplace { get; set; }
-
-        public int ImportanceReplace { get; set; }
-
-        public bool RecurrenceReplace { get; set; }
-
-        public bool ReminderReplace { get; set; }
-
-    }
-
 }

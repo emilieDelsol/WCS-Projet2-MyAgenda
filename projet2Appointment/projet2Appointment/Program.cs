@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +15,13 @@ namespace projet2Appointment
     {
         public static void Main(string[] args)
         {
+            SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder();
+            stringBuilder.InitialCatalog = "MyAgenda";
+            stringBuilder.DataSource = @"LOCALHOST\SQLEXPRESS";
+            stringBuilder.IntegratedSecurity = true;
+            DataAbstractionLayer.Open(stringBuilder);
             CreateHostBuilder(args).Build().Run();
+            DataAbstractionLayer.Close();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
