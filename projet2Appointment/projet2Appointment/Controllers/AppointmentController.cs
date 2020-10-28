@@ -38,8 +38,7 @@ namespace projet2Appointment.Controllers
             List<Appointment> listFilter = new List<Appointment>();
 
             modifyList.SortByType(listFilter, myList, "pro");
-            modifyList.SortByBeginDate(listFilter);
-            modifyList.ChangeID(listFilter);
+            
             return listFilter;
 
 
@@ -52,9 +51,8 @@ namespace projet2Appointment.Controllers
 
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            modifyList.SortByType(listFilterPerso, myList, "pro");
-            modifyList.SortByBeginDate(listFilterPerso);
-            modifyList.ChangeID(listFilterPerso);
+            modifyList.SortByType(listFilterPerso, myList, "perso");
+            
             return listFilterPerso;
             
 
