@@ -71,7 +71,7 @@ namespace projet2Appointment.Controllers
                 EndDate = appointment.EndDate,
                 Description = appointment.Description,
                 Pro = appointment.Pro,
-                Perso=appointment.Perso
+                Perso=appointment.Perso,
                 Address = appointment.Address,
                 Contact = appointment.Contact,
                 Email = appointment.Email,
