@@ -18,8 +18,22 @@ namespace projet2Appointment
         public string Description { get; set; }
 
         public string InsertAppointment { get; set; }
-        
+
+        public List<Appointment> DeleteAppointment { get; set; }
 
     }
-   
+
+    public class ReplaceAppointment
+    {
+        public int IdReplace { get; set; }
+
+        public string RdvReplace { get; set; }
+
+        public DateTime BeginDateReplace { get; set; }
+
+        public DateTime EndDateReplace { get; set; }
+
+        public string DescriptionReplace { get; set; }
+    }
+
 }

@@ -15,7 +15,14 @@ namespace projet2Appointment.Controllers
 
         [HttpGet]
         public List<Appointment> Get()
-        {   
+        {
+            myList.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
+            int i = 0;
+            foreach (Appointment appointment in myList)
+            {
+                appointment.Id = i;
+                i++;
+            }
             return myList;
         }
 
@@ -24,14 +31,46 @@ namespace projet2Appointment.Controllers
         {
             Appointment myAppointment = new Appointment
             {
-                Id = appointment.Id,
                 Rdv = appointment.Rdv,
                 BeginDate = appointment.BeginDate,
                 EndDate = appointment.EndDate,
                 Description = appointment.Description
             };
+
+            
             myList.Add(myAppointment);
             return myAppointment;
+            
+        }
+
+       [HttpPut]
+        public List<Appointment> ModifyAppointment(ReplaceAppointment modified)
+        {
+            ReplaceAppointment modifyAppointment = new ReplaceAppointment
+            {
+                IdReplace = modified.IdReplace,
+                RdvReplace = modified.RdvReplace,
+                BeginDateReplace = modified.BeginDateReplace,
+                EndDateReplace = modified.EndDateReplace,
+                DescriptionReplace = modified.DescriptionReplace,
+            };
+
+            myList[modifyAppointment.IdReplace].Rdv = modifyAppointment.RdvReplace;
+            myList[modifyAppointment.IdReplace].BeginDate = modifyAppointment.BeginDateReplace;
+            myList[modifyAppointment.IdReplace].EndDate = modifyAppointment.EndDateReplace;
+            myList[modifyAppointment.IdReplace].Description = modifyAppointment.DescriptionReplace;
+            return myList;
+        }
+
+
+
+        [HttpDelete]
+        public List<Appointment> DeleteAppointment(Appointment appointementToDelete)
+        {
+            myList.RemoveAt(appointementToDelete.Id);
+            return myList;
         }
     }
+
 }
+
