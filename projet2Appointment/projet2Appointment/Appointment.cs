@@ -73,17 +73,20 @@ namespace projet2Appointment
             }
             
         }
-        public void filterByDate(List<Appointment> list, List<Appointment> myList, String beginFilter)
+        public void filterByDate(List<Appointment> list, List<Appointment> myList, DateTime beginFilter)
         {
             foreach(Appointment appointment in myList)
             {
-                if(appointment.BeginDate>=beginFilter) //a résoudre changement de type 
-                /*DateTime dateFromString =
-                    DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
-                    Console.WriteLine(dateFromString.ToString());
+                if(appointment.BeginDate>=beginFilter) {//a résoudre changement de type 
+                    /*DateTime dateFromString =
+                        DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+                        Console.WriteLine(dateFromString.ToString());
 
-                 "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/ */
-                {
+                     "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
+                    {
+                    see this doc: 
+                    https://stackoverflow.com/questions/41577376/how-to-read-values-from-the-querystring-with-asp-net-core
+                    */
                     list.Add(appointment);
                 }
             }
