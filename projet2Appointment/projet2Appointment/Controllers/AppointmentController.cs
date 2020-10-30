@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,19 +12,49 @@ namespace projet2Appointment.Controllers
     [Route("[controller]")]
     public class AppointmentController : ControllerBase
     {
+        
         private static List<Appointment> myList = new List<Appointment>();
-
+        public ModifyList modifyList = new ModifyList();
+        
         [HttpGet]
-        public List<Appointment> Get()
+        
+        public List<Appointment> GetList()
         {
-            myList.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
-            int i = 0;
-            foreach (Appointment appointment in myList)
-            {
-                appointment.Id = i;
-                i++;
-            }
+            modifyList.SortByBeginDate(myList);
+            modifyList.ChangeID(myList);
+            
             return myList;
+        }
+
+        [HttpGet("filter/pro")]
+
+        public List<Appointment> GetFilterPro()
+        {
+            
+            List<Appointment> listFilter = new List<Appointment>();
+
+            modifyList.SortByType(listFilter, myList, "pro");
+            modifyList.SortByBeginDate(listFilter);
+
+            return listFilter;
+
+
+        }
+
+        [HttpGet("filter/perso")]
+
+        public List<Appointment> GetFilterPerso()
+        {
+
+            List<Appointment> listFilterPerso = new List<Appointment>();
+
+            modifyList.SortByType(listFilterPerso, myList, "perso");
+            modifyList.SortByBeginDate(listFilterPerso);
+
+            return listFilterPerso;
+            
+
+
         }
 
         [HttpPost]
@@ -35,6 +66,8 @@ namespace projet2Appointment.Controllers
                 BeginDate = appointment.BeginDate,
                 EndDate = appointment.EndDate,
                 Description = appointment.Description,
+                Pro = appointment.Pro,
+                Perso=appointment.Perso,
                 Address = appointment.Address,
                 Contact = appointment.Contact,
                 Email = appointment.Email,
@@ -42,6 +75,7 @@ namespace projet2Appointment.Controllers
                 Importance = appointment.Importance,
                 Recurrence = appointment.Recurrence,
                 Reminder = appointment.Reminder
+
             };
 
             
