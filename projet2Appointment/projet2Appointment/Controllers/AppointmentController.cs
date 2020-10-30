@@ -60,14 +60,14 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpGet("filter/date")]
-        public List<Appointment> GetFilterByDate(String dateAsString)
+        public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateAsString")] String beginDateAsString, [FromQuery (Name = "endDateAsString")] String endDateAsString)
         {
             // "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
             /*DateTime dateFromString =
                 DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
                 Console.WriteLine(dateFromString.ToString());*/
             List<Appointment> listFilterByDate = new List<Appointment>();
-            modifyList.filterBetweenDate(listFilterByDate, myList, dateAsString);
+            modifyList.filterBetweenDate(listFilterByDate, myList, beginDateAsString, endDateAsString);
 
             return listFilterByDate;
         }

@@ -73,11 +73,17 @@ namespace projet2Appointment
             }
             
         }
-        public void filterByDate(List<Appointment> list, List<Appointment> myList, DateTime beginFilter)
+        public void filterBetweenDate(List<Appointment> list, List<Appointment> myList, String beginDateAsString, String endDateAsString)
         {
             foreach(Appointment appointment in myList)
             {
-                if(appointment.BeginDate>=beginFilter) {//a résoudre changement de type 
+                DateTime beginDateFromString = DateTime.Parse(beginDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                DateTime endDateFromString = DateTime.Parse(endDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                
+                if(appointment.BeginDate>=beginDateFromString && appointment.EndDate<=endDateFromString) {
+                    
+                    //a résoudre changement de type 
+                    
                     /*DateTime dateFromString =
                         DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
                         Console.WriteLine(dateFromString.ToString());
