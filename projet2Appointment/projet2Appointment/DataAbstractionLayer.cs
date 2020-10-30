@@ -37,7 +37,7 @@ namespace projet2Appointment
             }
             return appointments;
         }
-
+        
         public static void Close()
         {
             if (_connection.State == System.Data.ConnectionState.Open)
@@ -45,5 +45,30 @@ namespace projet2Appointment
                 _connection.Close();
             }
         }
+       /* public static SqlConnection GetConnectionPerso()
+        {
+            return _connection;
+        }
+        public static List<Appointment> GetPersoAppointments()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE perso=true";
+            SqlDataReader readerPerso = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (readerPerso.Read())
+            {
+                Appointment appointment = new Appointment { Id = readerPerso.GetInt32(0), Rdv = readerPerso.GetString(1) };
+                appointments.Add(appointment);
+            }
+            return appointments;
+        }
+
+        public static void ClosePerso()
+        {
+            if (_connection.State == System.Data.ConnectionState.Open)
+            {
+                _connection.Close();
+            }
+        }*/
     }
 }
