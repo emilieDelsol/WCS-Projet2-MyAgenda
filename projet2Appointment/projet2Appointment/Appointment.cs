@@ -31,7 +31,7 @@ namespace projet2Appointment
 
         public bool Reminder { get; set; }
 
-        public string InsertAppointment { get; set; }
+        /*public string InsertAppointment { get; set; }*/
 
         public List<Appointment> DeleteAppointment { get; set; }
 

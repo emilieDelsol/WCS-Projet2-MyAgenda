@@ -80,6 +80,37 @@ namespace projet2Appointment
                 };
                 appointments.Add(appointment);
             }
+            reader.Close();
+            return appointments;
+        }
+
+        public static List<Appointment> PostAppointments()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES ('Réunion parent-prof', '2020-11-10T17:00:00', '2020-11-10T18:00:00', 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
             return appointments;
         }
         public static void Close()
@@ -89,30 +120,6 @@ namespace projet2Appointment
                 _connection.Close();
             }
         }
-       /* public static SqlConnection GetConnectionPerso()
-        {
-            return _connection;
-        }
-        public static List<Appointment> GetPersoAppointments()
-        {
-            SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE perso=true";
-            SqlDataReader readerPerso = command.ExecuteReader();
-            List<Appointment> appointments = new List<Appointment>();
-            while (readerPerso.Read())
-            {
-                Appointment appointment = new Appointment { Id = readerPerso.GetInt32(0), Rdv = readerPerso.GetString(1) };
-                appointments.Add(appointment);
-            }
-            return appointments;
-        }
-
-        public static void ClosePerso()
-        {
-            if (_connection.State == System.Data.ConnectionState.Open)
-            {
-                _connection.Close();
-            }
-        }*/
+      
     }
 }
