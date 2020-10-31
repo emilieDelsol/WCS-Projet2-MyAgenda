@@ -67,9 +67,9 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpPost]
-        public List<Appointment> PostMyAppointment()
+        public List<Appointment> PostMyAppointment(Appointment myUserEntry)
         {   
-            return DataAbstractionLayer.PostAppointments();   
+            return DataAbstractionLayer.PostAppointments(myUserEntry);   
         }
 
 
