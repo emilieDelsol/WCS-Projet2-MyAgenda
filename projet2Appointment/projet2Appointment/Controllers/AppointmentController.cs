@@ -30,8 +30,10 @@ namespace projet2Appointment.Controllers
         {
             List<Appointment> listFilter = new List<Appointment>();
 
-            modifyList.SortByType(listFilter, myList, "pro");
+
+            modifyList.filterByType(listFilter, myList, "pro");
             
+
             return listFilter;
         }
 
@@ -41,11 +43,27 @@ namespace projet2Appointment.Controllers
 
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            modifyList.SortByType(listFilterPerso, myList, "perso");
+            /*modifyList.SortByType(listFilterPerso, myList, "perso");
             modifyList.SortByBeginDate(listFilterPerso);
             modifyList.ChangeID(listFilterPerso);
-            /*return listFilterPerso;*/
+            return listFilterPerso;*/
             return DataAbstractionLayer.GetPersoAppointments();
+
+            
+        }
+
+        [HttpGet("filter/date")]
+        public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateAsString")] String beginDateAsString, [FromQuery (Name = "endDateAsString")] String endDateAsString)
+        {
+            // "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
+            /*DateTime dateFromString =
+                DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+                Console.WriteLine(dateFromString.ToString());*/
+            List<Appointment> listFilterByDate = new List<Appointment>();
+            modifyList.filterBetweenDate(listFilterByDate, myList, beginDateAsString, endDateAsString);
+
+            return listFilterByDate;
+
         }
 
         [HttpPost]

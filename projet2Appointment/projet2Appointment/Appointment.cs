@@ -59,7 +59,7 @@ namespace projet2Appointment
             list.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
         }
 
-        public void SortByType(List<Appointment> list, List<Appointment> mylist, string type)
+        public void filterByType(List<Appointment> list, List<Appointment> mylist, string type)
         {
 
             if (type == "pro")
@@ -85,6 +85,30 @@ namespace projet2Appointment
                 }
             }
 
+        }
+        public void filterBetweenDate(List<Appointment> list, List<Appointment> myList, String beginDateAsString, String endDateAsString)
+        {
+            foreach(Appointment appointment in myList)
+            {
+                DateTime beginDateFromString = DateTime.Parse(beginDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                DateTime endDateFromString = DateTime.Parse(endDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                
+                if(appointment.BeginDate>=beginDateFromString && appointment.EndDate<=endDateFromString) {
+                    
+                    //a résoudre changement de type 
+                    
+                    /*DateTime dateFromString =
+                        DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+                        Console.WriteLine(dateFromString.ToString());
+
+                     "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
+                    {
+                    see this doc: 
+                    https://stackoverflow.com/questions/41577376/how-to-read-values-from-the-querystring-with-asp-net-core
+                    */
+                    list.Add(appointment);
+                }
+            }
         }
     }
 }
