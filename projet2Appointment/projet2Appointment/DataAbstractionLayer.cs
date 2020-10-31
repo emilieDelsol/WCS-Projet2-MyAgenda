@@ -84,39 +84,31 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> PostAppointments(Appointment userEntry)
+        public static Appointment PostAppointments(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             /*            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES ('Réunion parent-prof', '2020-11-10T17:00:00', '2020-11-10T18:00:00', 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
             */
-            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES (@rdv,@beginDate, @endDate, 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
+            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
+                "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
             command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
             command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
+            command.Parameters.AddWithValue("@description", userEntry.Description);
+            command.Parameters.AddWithValue("@address", userEntry.Address);
+            command.Parameters.AddWithValue("@contact", userEntry.Contact);
+            command.Parameters.AddWithValue("@email", userEntry.Email);
+            command.Parameters.AddWithValue("@phone", userEntry.Phone);
+            command.Parameters.AddWithValue("@importance", userEntry.Importance);
+            command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
+            command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
+            command.Parameters.AddWithValue("@pro", userEntry.Pro);
+            command.Parameters.AddWithValue("@perso", userEntry.Perso);
             SqlDataReader reader = command.ExecuteReader();
-            List<Appointment> appointments = new List<Appointment>();
-            while (reader.Read())
-            {
-                Appointment appointment = new Appointment
-                {
-                    Id = reader.GetInt32(0),
-                    Rdv = reader.GetString(1),
-                    BeginDate = reader.GetDateTime(2),
-                    EndDate = reader.GetDateTime(3),
-                    Description = reader.GetString(4),
-                    Address = reader.GetString(5),
-                    Contact = reader.GetString(6),
-                    Email = reader.GetString(7),
-                    Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
-                    Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
-                };
-                appointments.Add(appointment);
-            }
+            
+            
             reader.Close();
-            return appointments;
+            return userEntry;
         }
         public static void Close()
         {
