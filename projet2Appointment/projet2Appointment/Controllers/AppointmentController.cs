@@ -28,13 +28,11 @@ namespace projet2Appointment.Controllers
         [HttpGet("filter/pro")]
         public List<Appointment> GetFilterPro()
         {
-            List<Appointment> listFilter = new List<Appointment>();
+            //List<Appointment> listFilter = new List<Appointment>();            
+            //modifyList.filterByType(listFilter, myList, "pro");          
+            //return listFilter;
 
-
-            modifyList.filterByType(listFilter, myList, "pro");
-            
-
-            return listFilter;
+            return DataAbstractionLayer.GetProAppointments();
         }
 
         [HttpGet("filter/perso")]
