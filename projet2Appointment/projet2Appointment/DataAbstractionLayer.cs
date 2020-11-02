@@ -28,7 +28,7 @@ namespace projet2Appointment
         public static List<Appointment> GetAllAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment";
+            command.CommandText = "SELECT * FROM Appointment ORDER BY BeginDate";
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
