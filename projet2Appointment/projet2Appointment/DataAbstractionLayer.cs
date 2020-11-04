@@ -115,7 +115,7 @@ namespace projet2Appointment
         {
             SqlCommand command = _connection.CreateCommand();
             
-            command.CommandText = "UPDATE Appointment SET Rdv = @rdv, BeginDate = @beginDate, EndDate = @endDate, AppointmentDescription = @description, Adress = @address, Contact = @contact, Email = @email, Phone = @phone, Importance = @importance, Recurence = @recurence, Reminder = @reminder, Pro = @pro, Perso = @perso WHERE IdAppointment = @idUserEntry";
+            command.CommandText = "UPDATE Appointment SET Rdv = @rdv, BeginDate = @beginDate, EndDate = @endDate, AppointmentDescription = @description, AppointmentAddress = @address, Contact = @contact, Email = @email, Phone = @phone, Importance = @importance, Recurence = @recurence, Reminder = @reminder, Pro = @pro, Perso = @perso WHERE IdAppointment = @idUserEntry";
 
             command.Parameters.AddWithValue("@idUserEntry", userEntry.Id);
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
