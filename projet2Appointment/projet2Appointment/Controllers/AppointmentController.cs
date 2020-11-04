@@ -22,13 +22,16 @@ namespace projet2Appointment.Controllers
             modifyList.SortByBeginDate(myList);
             modifyList.ChangeID(myList);
             
+
             return DataAbstractionLayer.GetAllAppointments();
+
         }
 
         [HttpGet("filter/pro")]
         public List<Appointment> GetFilterPro()
         {
             List<Appointment> listFilter = new List<Appointment>();
+
 
 
             modifyList.filterByType(listFilter, myList, "pro");
@@ -43,11 +46,10 @@ namespace projet2Appointment.Controllers
 
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            /*modifyList.SortByType(listFilterPerso, myList, "perso");
-            modifyList.SortByBeginDate(listFilterPerso);
-            modifyList.ChangeID(listFilterPerso);
-            return listFilterPerso;*/
+
+           
             return DataAbstractionLayer.GetPersoAppointments();
+
 
             
         }
