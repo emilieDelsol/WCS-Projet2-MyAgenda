@@ -31,7 +31,7 @@ namespace projet2Appointment
 
         public bool Reminder { get; set; }
 
-        public string InsertAppointment { get; set; }
+        /*public string InsertAppointment { get; set; }*/
 
         public List<Appointment> DeleteAppointment { get; set; }
 
@@ -51,16 +51,15 @@ namespace projet2Appointment
                 appointment.Id = i;
                 i++;
             }
-            
+
         }
-        
 
         public void SortByBeginDate(List<Appointment> list)
         {
             list.Sort((x, y) => DateTime.Compare(x.BeginDate, y.BeginDate));
         }
 
-        public void SortByType(List<Appointment> list, List<Appointment> mylist, string type)
+        public void filterByType(List<Appointment> list, List<Appointment> mylist, string type)
         {
 
             if (type == "pro")
@@ -85,37 +84,31 @@ namespace projet2Appointment
 
                 }
             }
-            
+
         }
+        public void filterBetweenDate(List<Appointment> list, List<Appointment> myList, String beginDateAsString, String endDateAsString)
+        {
+            foreach(Appointment appointment in myList)
+            {
+                DateTime beginDateFromString = DateTime.Parse(beginDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                DateTime endDateFromString = DateTime.Parse(endDateAsString, System.Globalization.CultureInfo.InvariantCulture);
+                
+                if(appointment.BeginDate>=beginDateFromString && appointment.EndDate<=endDateFromString) {
+                    
+                    //a résoudre changement de type 
+                    
+                    /*DateTime dateFromString =
+                        DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
+                        Console.WriteLine(dateFromString.ToString());
 
+                     "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
+                    {
+                    see this doc: 
+                    https://stackoverflow.com/questions/41577376/how-to-read-values-from-the-querystring-with-asp-net-core
+                    */
+                    list.Add(appointment);
+                }
+            }
+        }
     }
-
-    public class ReplaceAppointment
-    {
-        public int IdReplace { get; set; }
-
-        public string RdvReplace { get; set; }
-
-        public DateTime BeginDateReplace { get; set; }
-
-        public DateTime EndDateReplace { get; set; }
-
-        public string DescriptionReplace { get; set; }
-
-        public string AddressReplace { get; set; }
-
-        public string ContactReplace { get; set; }
-
-        public string EmailReplace { get; set; }
-
-        public string PhoneReplace { get; set; }
-
-        public int ImportanceReplace { get; set; }
-
-        public bool RecurrenceReplace { get; set; }
-
-        public bool ReminderReplace { get; set; }
-
-    }
-
 }
