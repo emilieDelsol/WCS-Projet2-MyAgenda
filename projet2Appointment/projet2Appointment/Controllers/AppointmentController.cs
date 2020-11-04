@@ -22,45 +22,40 @@ namespace projet2Appointment.Controllers
             modifyList.SortByBeginDate(myList);
             modifyList.ChangeID(myList);
             
+
             return DataAbstractionLayer.GetAllAppointments();
+
         }
 
         [HttpGet("filter/pro")]
         public List<Appointment> GetFilterPro()
         {
-            //List<Appointment> listFilter = new List<Appointment>();            
-            //modifyList.filterByType(listFilter, myList, "pro");          
-            //return listFilter;
-
-            return DataAbstractionLayer.GetProAppointments();
+            modifyList.filterByType(listFilter, myList, "pro");
+          
+            return listFilter;
         }
 
         [HttpGet("filter/perso")]
         public List<Appointment> GetFilterPerso()
         {
-
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            /*modifyList.SortByType(listFilterPerso, myList, "perso");
-            modifyList.SortByBeginDate(listFilterPerso);
-            modifyList.ChangeID(listFilterPerso);
-            return listFilterPerso;*/
-            return DataAbstractionLayer.GetPersoAppointments();
-
-            
+            return DataAbstractionLayer.GetPersoAppointments(); 
         }
 
-        [HttpGet("filter/date")]
-        public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateAsString")] String beginDateAsString, [FromQuery (Name = "endDateAsString")] String endDateAsString)
+        [HttpGet("filter/importance")]
+        public List<Appointment> GetFilterImportance()
         {
-            // "00/00/00 00:00:00" https://www.c-sharpcorner.com/UploadFile/mahesh/working-with-datetime-using-C-Sharp/
-            /*DateTime dateFromString =
-                DateTime.Parse(dateString, System.Globalization.CultureInfo.InvariantCulture);
-                Console.WriteLine(dateFromString.ToString());*/
-            List<Appointment> listFilterByDate = new List<Appointment>();
-            modifyList.filterBetweenDate(listFilterByDate, myList, beginDateAsString, endDateAsString);
+            List<Appointment> listFilterPerso = new List<Appointment>();                      
+            return DataAbstractionLayer.GetImportantAppointments();            
+        }
 
-            return listFilterByDate;
+
+        [HttpGet("filter/date")]
+        public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateFilter")] String beginDateFilter, [FromQuery (Name = "endDateFilter")] String endDateFilter)
+        {    
+
+            return DataAbstractionLayer.GetBetweenDate(beginDateFilter,endDateFilter);
 
         }
 
@@ -72,11 +67,12 @@ namespace projet2Appointment.Controllers
 
 
         [HttpPut]
-        public List<Appointment> ModifyAppointment(Appointment newAppointment)
+        public Appointment ModifyAppointment(Appointment myUserEntry)
         {
-            myList[newAppointment.Id] = newAppointment;
-            return myList;
+            
+            return DataAbstractionLayer.PutAppointments(myUserEntry);
         }
+
 
        
         [HttpDelete]
@@ -89,6 +85,5 @@ namespace projet2Appointment.Controllers
             return myList;
         }
     }
-
 }
 
