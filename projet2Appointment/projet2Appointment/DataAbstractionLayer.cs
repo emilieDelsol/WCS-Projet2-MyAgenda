@@ -44,7 +44,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -73,7 +73,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -104,7 +104,7 @@ namespace projet2Appointment
                 command.Parameters.AddWithValue("@description", userEntry.Description);
             }
 
-            if (userEntry.Adress is null)
+            if (userEntry.Address is null)
             {
                 command.Parameters.AddWithValue("@address", "");
             }
@@ -140,45 +140,45 @@ namespace projet2Appointment
                command.Parameters.AddWithValue("@phone", userEntry.Phone);
             }
 
-            if (userEntry.Importance is null)
+            if (!userEntry.Importance)
             {
-                command.Parameters.AddWithValue("@importance", "");
+                command.Parameters.AddWithValue("@importance", false);
             }
             else 
             {
                command.Parameters.AddWithValue("@importance", userEntry.Importance);
             }
 
-            if (userEntry.Recurrence is null)
+            if (!userEntry.Recurrence)
             {
-                command.Parameters.AddWithValue("@recurence", "");
+                command.Parameters.AddWithValue("@recurence", false);
             }
             else 
             {
                command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
             }
 
-            if (userEntry.Reminder is null)
+            if (!userEntry.Reminder)
             {
-                command.Parameters.AddWithValue("@reminder", "");
+                command.Parameters.AddWithValue("@reminder", false);
             }
             else 
             {
                command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
             }
 
-            if (userEntry.Pro is null)
+            if (!userEntry.Pro)
             {
-                command.Parameters.AddWithValue("@pro", "");
+                command.Parameters.AddWithValue("@pro", false);
             }
             else 
             {
                command.Parameters.AddWithValue("@pro", userEntry.Pro);
             }
 
-            if (userEntry.Perso is null)
+            if (!userEntry.Perso)
             {
-                command.Parameters.AddWithValue("@perso", "");
+                command.Parameters.AddWithValue("@perso", false);
             }
             else 
             {
