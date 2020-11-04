@@ -76,11 +76,12 @@ namespace projet2Appointment.Controllers
 
 
         [HttpPut]
-        public List<Appointment> ModifyAppointment(Appointment newAppointment)
+        public Appointment ModifyAppointment(Appointment myUserEntry)
         {
-            myList[newAppointment.Id] = newAppointment;
-            return myList;
+            
+            return DataAbstractionLayer.PutAppointments(myUserEntry);
         }
+
 
        
         [HttpDelete]
