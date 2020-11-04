@@ -54,6 +54,14 @@ namespace projet2Appointment.Controllers
             
         }
 
+        [HttpGet("filter/importance")]
+        public List<Appointment> GetFilterImportance()
+        {
+            List<Appointment> listFilterPerso = new List<Appointment>();                      
+            return DataAbstractionLayer.GetImportantAppointments();            
+        }
+
+
         [HttpGet("filter/date")]
         public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateFilter")] String beginDateFilter, [FromQuery (Name = "endDateFilter")] String endDateFilter)
         {    

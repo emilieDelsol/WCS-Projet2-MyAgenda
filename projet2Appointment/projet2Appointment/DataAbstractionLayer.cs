@@ -44,7 +44,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -73,7 +73,37 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
+
+         public static List<Appointment> GetImportantAppointments()
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1)";
+            SqlDataReader reader  = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
