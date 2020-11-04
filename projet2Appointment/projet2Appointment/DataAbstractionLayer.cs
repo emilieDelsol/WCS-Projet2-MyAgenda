@@ -94,6 +94,7 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
             command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
             command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
+
             if (userEntry.Description is null)
             {
                 command.Parameters.AddWithValue("@description", "");
@@ -102,15 +103,95 @@ namespace projet2Appointment
             {
                 command.Parameters.AddWithValue("@description", userEntry.Description);
             }
-            command.Parameters.AddWithValue("@address", userEntry.Address);
-            command.Parameters.AddWithValue("@contact", userEntry.Contact);
-            command.Parameters.AddWithValue("@email", userEntry.Email);
+
+            if (userEntry.Adress is null)
+            {
+                command.Parameters.AddWithValue("@address", "");
+            }
+            else 
+            {
+                command.Parameters.AddWithValue("@address", userEntry.Address);
+            }
+            
+            if (userEntry.Contact is null)
+            {
+                command.Parameters.AddWithValue("@contact", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@contact", userEntry.Contact);
+            }
+            
+            if (userEntry.Email is null)
+            {
+                command.Parameters.AddWithValue("@email", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@email", userEntry.Email);
+            }
+
+            if (userEntry.Phone is null)
+            {
+                command.Parameters.AddWithValue("@phone", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@phone", userEntry.Phone);
+            }
+
+            if (userEntry.Importance is null)
+            {
+                command.Parameters.AddWithValue("@importance", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@importance", userEntry.Importance);
+            }
+
+            if (userEntry.Recurrence is null)
+            {
+                command.Parameters.AddWithValue("@recurence", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
+            }
+
+            if (userEntry.Reminder is null)
+            {
+                command.Parameters.AddWithValue("@reminder", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
+            }
+
+            if (userEntry.Pro is null)
+            {
+                command.Parameters.AddWithValue("@pro", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@pro", userEntry.Pro);
+            }
+
+            if (userEntry.Perso is null)
+            {
+                command.Parameters.AddWithValue("@perso", "");
+            }
+            else 
+            {
+               command.Parameters.AddWithValue("@perso", userEntry.Perso);
+            }
+
+            /*command.Parameters.AddWithValue("@email", userEntry.Email);
             command.Parameters.AddWithValue("@phone", userEntry.Phone);
             command.Parameters.AddWithValue("@importance", userEntry.Importance);
             command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
             command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
             command.Parameters.AddWithValue("@pro", userEntry.Pro);
-            command.Parameters.AddWithValue("@perso", userEntry.Perso);
+            command.Parameters.AddWithValue("@perso", userEntry.Perso);*/
             SqlDataReader reader = command.ExecuteReader();
             
             
