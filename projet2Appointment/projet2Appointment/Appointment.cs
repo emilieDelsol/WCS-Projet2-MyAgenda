@@ -25,7 +25,7 @@ namespace projet2Appointment
 
         public string Phone { get; set; }
 
-        public int Importance { get; set; }
+        public bool Importance { get; set; }
 
         public bool Recurrence { get; set; }
 
