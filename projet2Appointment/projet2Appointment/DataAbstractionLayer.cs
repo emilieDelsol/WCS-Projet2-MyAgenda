@@ -94,7 +94,14 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
             command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
             command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
-            command.Parameters.AddWithValue("@description", userEntry.Description);
+            if (userEntry.Description is !null)
+            {
+                command.Parameters.AddWithValue("@description", userEntry.Description);
+            }
+            /*else 
+            {
+                command.Parameters.AddWithValue("@description", userEntry.Description);
+            }*/
             command.Parameters.AddWithValue("@address", userEntry.Address);
             command.Parameters.AddWithValue("@contact", userEntry.Contact);
             command.Parameters.AddWithValue("@email", userEntry.Email);
