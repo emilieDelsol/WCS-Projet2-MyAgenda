@@ -28,48 +28,48 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpGet("filter/pro")]
-        public List<Appointment> GetFilterPro()
+        public List<Appointment> SelectFilterPro()
         {
             List<Appointment> listFilterPro = new List<Appointment>();
-            return DataAbstractionLayer.GetProAppointments();
+            return DataAbstractionLayer.SelectProAppointments();
         }
 
         [HttpGet("filter/perso")]
-        public List<Appointment> GetFilterPerso()
+        public List<Appointment> SelectFilterPerso()
         {
             List<Appointment> listFilterPerso = new List<Appointment>();
 
-            return DataAbstractionLayer.GetPersoAppointments(); 
+            return DataAbstractionLayer.SelectPersoAppointments(); 
         }
 
         [HttpGet("filter/importance")]
-        public List<Appointment> GetFilterImportance()
+        public List<Appointment> SelectFilterImportance()
         {
             List<Appointment> listFilterImportance = new List<Appointment>();                      
-            return DataAbstractionLayer.GetImportantAppointments();            
+            return DataAbstractionLayer.SelectImportantAppointments();            
         }
 
         [HttpGet("filter/importance/pro")]
         [HttpGet("filter/pro/importance")]
-        public List<Appointment> GetFilterImportancePro()
+        public List<Appointment> SelectFilterImportancePro()
         {
             List<Appointment> listFilterImportancePro = new List<Appointment>();
-            return DataAbstractionLayer.GetImportantProAppointments();
+            return DataAbstractionLayer.SelectImportantProAppointments();
         }
 
         [HttpGet("filter/importance/perso")]
         [HttpGet("filter/perso/importance")]
-        public List<Appointment> GetFilterImportancePerso()
+        public List<Appointment> SelectFilterImportancePerso()
         {
             List<Appointment> listFilterImportancePro = new List<Appointment>();
-            return DataAbstractionLayer.GetImportantPersoAppointments();
+            return DataAbstractionLayer.SelectImportantPersoAppointments();
         }
 
         [HttpGet("filter/date")]
-        public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateFilter")] String beginDateFilter, [FromQuery (Name = "endDateFilter")] String endDateFilter)
+        public List<Appointment> SelectFilterBetweenDate([FromQuery(Name ="beginDateFilter")] String beginDateFilter, [FromQuery (Name = "endDateFilter")] String endDateFilter)
         {    
 
-            return DataAbstractionLayer.GetBetweenDate(beginDateFilter,endDateFilter);
+            return DataAbstractionLayer.SelectBetweenDate(beginDateFilter,endDateFilter);
 
         }
 
