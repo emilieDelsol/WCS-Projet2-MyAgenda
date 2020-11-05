@@ -57,9 +57,9 @@ namespace projet2Appointment.Controllers
 
 
         [HttpPut]
-        public Appointment ModifyMyAppointment(Appointment myUserEntry)
+        public Appointment PutAppointment(Appointment myUserEntry)
         {
-            return DataAbstractionLayer.ModifyAppointment(myUserEntry);
+            return DataAbstractionLayer.PutAppointment(myUserEntry);
         }
 
 

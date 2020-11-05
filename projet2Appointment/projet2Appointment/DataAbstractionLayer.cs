@@ -201,7 +201,7 @@ namespace projet2Appointment
             return userEntry;
         }
 
-         public static Appointment ModifyAppointment(Appointment userEntry)
+         public static Appointment PutAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             
