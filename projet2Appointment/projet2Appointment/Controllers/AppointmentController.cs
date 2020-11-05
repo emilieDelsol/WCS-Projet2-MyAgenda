@@ -30,16 +30,12 @@ namespace projet2Appointment.Controllers
         [HttpGet("filter/pro")]
         public List<Appointment> GetFilterPro()
         {
-            modifyList.filterByType(listFilter, myList, "pro");
-          
-            return listFilter;
+            return DataAbstractionLayer.GetProAppointments();
         }
 
         [HttpGet("filter/perso")]
         public List<Appointment> GetFilterPerso()
         {
-            List<Appointment> listFilterPerso = new List<Appointment>();
-
             return DataAbstractionLayer.GetPersoAppointments(); 
         }
 
