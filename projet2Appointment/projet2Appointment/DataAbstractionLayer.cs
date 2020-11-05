@@ -74,7 +74,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -164,7 +164,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
+                    Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
