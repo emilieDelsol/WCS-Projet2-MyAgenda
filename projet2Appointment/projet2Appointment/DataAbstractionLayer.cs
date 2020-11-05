@@ -270,7 +270,7 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
           
-
+            
             
             command.ExecuteNonQuery();
             
@@ -302,6 +302,19 @@ namespace projet2Appointment
             SqlDataReader reader = command.ExecuteReader();
 
             reader.Close();
+            return userEntry;
+
+        }
+
+        public static Appointment DeleteMyAppointment(String idToDelete)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            
+            command.CommandText = "DELETE Appointment WHERE IdAppointment = @userEntryIdTodelete";
+
+            command.Parameters.AddWithValue("@userEntryIdTodele, IdToDelete);
+           
+            SqlDataReader reader = command.ExecuteNonQuery;
             return userEntry;
 
         }
