@@ -40,7 +40,23 @@ namespace projet2Appointment.Controllers
             return DataAbstractionLayer.GetImportantAppointments();            
         }
 
+        [HttpGet("filter/importance/pro")]
+        [HttpGet("filter/pro/importance")]
+        public List<Appointment> GetFilterImportancePro()
+        {
+            List<Appointment> listFilterImportancePro = new List<Appointment>();
+            return DataAbstractionLayer.GetImportantProAppointments();
 
+        }
+
+        [HttpGet("filter/importance/perso")]
+        [HttpGet("filter/perso/importance")]
+        public List<Appointment> GetFilterImportancePerso()
+        {
+            List<Appointment> listFilterImportancePro = new List<Appointment>();
+            return DataAbstractionLayer.GetImportantPersoAppointments();
+
+        }
         [HttpGet("filter/date")]
         public List<Appointment> GetFilterBetweenDate([FromQuery(Name ="beginDateFilter")] String beginDateFilter, [FromQuery (Name = "endDateFilter")] String endDateFilter)
         {    
@@ -52,7 +68,7 @@ namespace projet2Appointment.Controllers
         [HttpPost]
         public Appointment InsertMyAppointment(Appointment myUserEntry)
         {   
-            return DataAbstractionLayer.InsertAppointment(myUserEntry);   
+            return DataAbstractionLayer.InsertAppointments(myUserEntry);   
         }
 
 
