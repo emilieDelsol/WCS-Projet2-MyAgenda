@@ -91,13 +91,9 @@ namespace projet2Appointment.Controllers
 
        
         [HttpDelete]
-        public List<Appointment> DeleteAppointment(Int32 id)
+        public String DeleteAppointment(Appointment appointmentToDelete)
         {
-            if (myList.Count > 0)
-            {
-                myList.RemoveAt(id);
-            }
-            return myList;
+            return DataAbstractionLayer.DeleteMyAppointment(appointmentToDelete);
         }
     }
 }

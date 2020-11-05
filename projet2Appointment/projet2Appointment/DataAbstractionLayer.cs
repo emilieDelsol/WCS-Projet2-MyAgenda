@@ -306,16 +306,20 @@ namespace projet2Appointment
 
         }
 
-        public static Appointment DeleteMyAppointment(String idToDelete)
+        public static String DeleteMyAppointment(Appointment appointmentToDelete)
         {
             SqlCommand command = _connection.CreateCommand();
+
+            Appointment appointment = new Appointment();
+           
+                appointment.Id = appointmentToDelete.Id;
             
             command.CommandText = "DELETE Appointment WHERE IdAppointment = @userEntryIdTodelete";
 
-            command.Parameters.AddWithValue("@userEntryIdTodele, IdToDelete);
+            command.Parameters.AddWithValue("@userEntryIdTodelete", appointment.Id);
            
-            SqlDataReader reader = command.ExecuteNonQuery;
-            return userEntry;
+            command.ExecuteNonQuery();
+            return "We delete appointment" ;
 
         }
 
