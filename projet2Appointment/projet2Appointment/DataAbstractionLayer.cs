@@ -175,7 +175,7 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static Appointment PostAppointments(Appointment userEntry)
+        public static Appointment InsertAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             /*            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES ('Réunion parent-prof', '2020-11-10T17:00:00', '2020-11-10T18:00:00', 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
@@ -202,7 +202,7 @@ namespace projet2Appointment
             return userEntry;
         }
 
-         public static Appointment PutAppointments(Appointment userEntry)
+         public static Appointment ModifyAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             
