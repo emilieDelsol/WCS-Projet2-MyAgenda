@@ -107,6 +107,16 @@ namespace projet2Appointment.Controllers
             return DataAbstractionLayer.SelectBetweenDatePersoImportance(beginDateFilter, endDateFilter);
         }
 
+
+        [HttpGet("filter/pro/importance/date")]
+        [HttpGet("filter/importance/pro/date")]
+
+        public List<Appointment> SelectFilterBetweenDateProImportance([FromQuery(Name = "beginDateFilter")] String beginDateFilter, [FromQuery(Name = "endDateFilter")] String endDateFilter)
+        {
+
+            return DataAbstractionLayer.SelectBetweenDateProImportance(beginDateFilter, endDateFilter);
+        }
+
         [HttpPost]
         public Appointment InsertMyAppointment(Appointment myUserEntry)
         {   
