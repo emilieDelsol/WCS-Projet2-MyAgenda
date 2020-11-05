@@ -19,12 +19,7 @@ namespace projet2Appointment.Controllers
         [HttpGet]
         public List<Appointment> GetList()
         {
-            modifyList.SortByBeginDate(myList);
-            modifyList.ChangeID(myList);
-            
-
-            return DataAbstractionLayer.GetAllAppointments();
-
+           return DataAbstractionLayer.GetAllAppointments();
         }
 
         [HttpGet("filter/pro")]
@@ -42,7 +37,6 @@ namespace projet2Appointment.Controllers
         [HttpGet("filter/importance")]
         public List<Appointment> GetFilterImportance()
         {
-            List<Appointment> listFilterPerso = new List<Appointment>();                      
             return DataAbstractionLayer.GetImportantAppointments();            
         }
 
@@ -65,7 +59,6 @@ namespace projet2Appointment.Controllers
         [HttpPut]
         public Appointment ModifyMyAppointment(Appointment myUserEntry)
         {
-            
             return DataAbstractionLayer.ModifyAppointment(myUserEntry);
         }
 

@@ -48,7 +48,7 @@ namespace projet2Appointment
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
-                }; //On peux auusi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
+                }; //On peux aussi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
                 appointments.Add(appointment);
             }
             reader.Close();
@@ -178,8 +178,7 @@ namespace projet2Appointment
         public static Appointment InsertAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
-            /*            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES ('Réunion parent-prof', '2020-11-10T17:00:00', '2020-11-10T18:00:00', 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
-            */
+        
             command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
                 "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
