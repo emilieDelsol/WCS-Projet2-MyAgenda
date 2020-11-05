@@ -83,115 +83,47 @@ namespace projet2Appointment
             reader.Close();
             return appointments;
         }
+        
 
-        public static Appointment PostAppointments(Appointment userEntry)
+        public static Appointment InsertAppointments(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             /*            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) VALUES ('Réunion parent-prof', '2020-11-10T17:00:00', '2020-11-10T18:00:00', 'Réunion pour le petit Adrien', 'Ecole des cancres 31140 Montberon', 'Madame la CPE','','051234567', '2', 'false', 'true', 'false', 'false');";
-            */
+            
+            Appointment appointment = new Appointment();
+            appointment.Rdv = userEntry.Rdv;
+            appointment.BeginDate = userEntry.BeginDate;
+            appointment.EndDate = userEntry.EndDate;
+            appointment.Description = userEntry.Description;
+            appointment.Address = userEntry.Address;
+            appointment.Contact = userEntry.Contact;
+            appointment.Email = userEntry.Email;
+            appointment.Phone = userEntry.Phone;
+            appointment.Importance = userEntry.Importance;
+            appointment.Recurrence = userEntry.Recurrence;
+            appointment.Reminder = userEntry.Reminder;
+            appointment.Pro = userEntry.Pro;
+            appointment.Perso = userEntry.Perso;*/
             command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
                 "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
+
+           
             command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
             command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
             command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
-
-            if (userEntry.Description is null)
-            {
-                command.Parameters.AddWithValue("@description", "");
-            }
-            else 
-            {
-                command.Parameters.AddWithValue("@description", userEntry.Description);
-            }
-
-            if (userEntry.Address is null)
-            {
-                command.Parameters.AddWithValue("@address", "");
-            }
-            else 
-            {
-                command.Parameters.AddWithValue("@address", userEntry.Address);
-            }
-            
-            if (userEntry.Contact is null)
-            {
-                command.Parameters.AddWithValue("@contact", "");
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@contact", userEntry.Contact);
-            }
-            
-            if (userEntry.Email is null)
-            {
-                command.Parameters.AddWithValue("@email", "");
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@email", userEntry.Email);
-            }
-
-            if (userEntry.Phone is null)
-            {
-                command.Parameters.AddWithValue("@phone", "");
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@phone", userEntry.Phone);
-            }
-
-            if (!userEntry.Importance)
-            {
-                command.Parameters.AddWithValue("@importance", false);
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@importance", userEntry.Importance);
-            }
-
-            if (!userEntry.Recurrence)
-            {
-                command.Parameters.AddWithValue("@recurence", false);
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
-            }
-
-            if (!userEntry.Reminder)
-            {
-                command.Parameters.AddWithValue("@reminder", false);
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
-            }
-
-            if (!userEntry.Pro)
-            {
-                command.Parameters.AddWithValue("@pro", false);
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@pro", userEntry.Pro);
-            }
-
-            if (!userEntry.Perso)
-            {
-                command.Parameters.AddWithValue("@perso", false);
-            }
-            else 
-            {
-               command.Parameters.AddWithValue("@perso", userEntry.Perso);
-            }
-
-            /*command.Parameters.AddWithValue("@email", userEntry.Email);
+            command.Parameters.AddWithValue("@description", userEntry.Description);
+            command.Parameters.AddWithValue("@address", userEntry.Address);
+            command.Parameters.AddWithValue("@contact", userEntry.Contact);
+            command.Parameters.AddWithValue("@email", userEntry.Email);
             command.Parameters.AddWithValue("@phone", userEntry.Phone);
             command.Parameters.AddWithValue("@importance", userEntry.Importance);
             command.Parameters.AddWithValue("@recurence", userEntry.Recurrence);
             command.Parameters.AddWithValue("@reminder", userEntry.Reminder);
             command.Parameters.AddWithValue("@pro", userEntry.Pro);
-            command.Parameters.AddWithValue("@perso", userEntry.Perso);*/
+            command.Parameters.AddWithValue("@perso", userEntry.Perso);
+          
+
+            
             SqlDataReader reader = command.ExecuteReader();
             
             
