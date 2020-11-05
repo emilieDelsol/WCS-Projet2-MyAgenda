@@ -312,14 +312,14 @@ namespace projet2Appointment
 
             Appointment appointment = new Appointment();
            
-                appointment.Id = appointmentToDelete.Id;
+            appointment.Id = appointmentToDelete.Id;
             
             command.CommandText = "DELETE Appointment WHERE IdAppointment = @userEntryIdTodelete";
 
             command.Parameters.AddWithValue("@userEntryIdTodelete", appointment.Id);
            
             command.ExecuteNonQuery();
-            return "We delete appointment" ;
+            return $"We delete appointment {appointment.Id}" ;
 
         }
 
