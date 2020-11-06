@@ -91,7 +91,7 @@ namespace projet2Appointment.Controllers
 
        
         [HttpDelete]
-        public String DeleteAppointment(Appointment appointmentToDelete)
+        public String DeleteMyAppointment(Appointment appointmentToDelete)
         {
             return DataAbstractionLayer.DeleteMyAppointment(appointmentToDelete);
         }
