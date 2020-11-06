@@ -49,6 +49,14 @@ namespace projet2Appointment.Controllers
 
         }
 
+        [HttpGet("searchByWord")]
+        public List<Appointment> SearchByWord([FromQuery(Name = "wordSearch")] String wordSearch)
+        {    
+
+            return DataAbstractionLayer.SearchByWord(wordSearch);
+
+        }
+
         [HttpPost]
         public Appointment InsertMyAppointment(Appointment myUserEntry)
         {   
