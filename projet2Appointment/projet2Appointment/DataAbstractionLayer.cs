@@ -25,7 +25,7 @@ namespace projet2Appointment
             return _connection;
         }
 
-        public static List<Appointment> GetAllAppointments()
+        public static List<Appointment> SelectAllAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT IdAppointment, Rdv,BeginDate,EndDate," +
@@ -60,14 +60,14 @@ namespace projet2Appointment
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
-                }; //On peux auusi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
+                }; //On peux aussi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
                 appointments.Add(appointment);
             }
             reader.Close();
             return appointments;
         }
 
-        public static List<Appointment> GetProAppointments()
+        public static List<Appointment> SelectProAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Pro=1)";
@@ -96,7 +96,7 @@ namespace projet2Appointment
             reader.Close();
             return appointments;
         }
-        public static List<Appointment> GetPersoAppointments()
+        public static List<Appointment> SelectPersoAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Perso=1)";
@@ -126,7 +126,7 @@ namespace projet2Appointment
             return appointments;
         }
 
-         public static List<Appointment> GetImportantAppointments()
+         public static List<Appointment> SelectImportantAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1)";
@@ -156,7 +156,7 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> GetImportantProAppointments()
+        public static List<Appointment> SelectImportantProAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Pro=1)";
@@ -186,7 +186,7 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> GetImportantPersoAppointments()
+        public static List<Appointment> SelectImportantPersoAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Perso=1)";
@@ -215,7 +215,7 @@ namespace projet2Appointment
             reader.Close();
             return appointments;
         }
-        public static List<Appointment> GetBetweenDate(String beginDateFilter, String endDateFilter)
+        public static List<Appointment> SelectBetweenDate(String beginDateFilter, String endDateFilter)
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter)";
@@ -248,10 +248,11 @@ namespace projet2Appointment
         }
         
 
-        public static Appointment InsertAppointments(Appointment userEntry)
+
+        public static Appointment InsertAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
-            
+
             command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
                 "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
 
@@ -279,7 +280,7 @@ namespace projet2Appointment
             return userEntry;
         }
 
-         public static Appointment PutAppointments(Appointment userEntry)
+         public static Appointment UpdateAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             
