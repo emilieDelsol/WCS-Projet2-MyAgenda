@@ -409,8 +409,8 @@ namespace projet2Appointment
         {
             SqlCommand command = _connection.CreateCommand();
             
-            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
-                "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
+            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, RecurrenceEndDate, Frequence, Reminder, Pro, Perso) " +
+                "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@recurrenceEndDate, @frequence, @reminder,@pro,@perso);";
 
            
             command.Parameters.AddWithValue("@rdv",userEntry.Rdv);
@@ -423,6 +423,8 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@phone", ((object)userEntry.Phone) ?? DBNull.Value);
             command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? false);
             command.Parameters.AddWithValue("@recurence", ((object)userEntry.Recurrence) ?? false);
+            command.Parameters.AddWithValue("@recurenceEndDate", ((object)userEntry.RecurrenceEndDate) ?? false);
+            command.Parameters.AddWithValue("@recurence", ((object)userEntry.Frequence) ?? false);
             command.Parameters.AddWithValue("@reminder", ((object)userEntry.Reminder) ?? false);
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
