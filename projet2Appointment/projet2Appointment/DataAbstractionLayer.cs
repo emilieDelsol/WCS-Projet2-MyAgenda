@@ -249,7 +249,7 @@ namespace projet2Appointment
         
 
 
-        public static Appointment PostAppointment(Appointment userEntry)
+        public static Appointment InsertAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
 
