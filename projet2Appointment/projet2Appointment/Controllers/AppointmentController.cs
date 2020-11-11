@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,10 +22,8 @@ namespace projet2Appointment.Controllers
         {
             modifyList.SortByBeginDate(myList);
             modifyList.ChangeID(myList);
-            
 
             return DataAbstractionLayer.GetAllAppointments();
-
         }
 
         [HttpGet("filter/pro")]
@@ -41,7 +40,6 @@ namespace projet2Appointment.Controllers
 
             return DataAbstractionLayer.GetPersoAppointments(); 
         }
-
         [HttpGet("filter/importance")]
         public List<Appointment> GetFilterImportance()
         {
@@ -91,7 +89,7 @@ namespace projet2Appointment.Controllers
 
        
         [HttpDelete]
-        public String DeleteMyAppointment(Appointment appointmentToDelete)
+        public HttpResponseMessage DeleteMyAppointment(Appointment appointmentToDelete)
         {
             return DataAbstractionLayer.DeleteMyAppointment(appointmentToDelete);
         }
