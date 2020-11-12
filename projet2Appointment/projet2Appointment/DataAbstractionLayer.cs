@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net;
 
 namespace projet2Appointment
 {
@@ -271,7 +274,7 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
           
-
+            
             
             command.ExecuteNonQuery();
             
@@ -304,6 +307,23 @@ namespace projet2Appointment
 
             reader.Close();
             return userEntry;
+
+        }
+
+        public static HttpResponseMessage DeleteMyAppointment(Appointment appointmentToDelete)
+        {
+            SqlCommand command = _connection.CreateCommand();
+
+            Appointment appointment = new Appointment();
+           
+            appointment.Id = appointmentToDelete.Id;
+            
+            command.CommandText = "DELETE Appointment WHERE IdAppointment = @userEntryIdTodelete";
+
+            command.Parameters.AddWithValue("@userEntryIdTodelete", appointment.Id);
+           
+            command.ExecuteNonQuery();
+            return new HttpResponseMessage( HttpStatusCode.Accepted );
 
         }
 

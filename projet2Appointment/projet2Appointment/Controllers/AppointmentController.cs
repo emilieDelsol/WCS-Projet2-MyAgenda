@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,9 @@ namespace projet2Appointment.Controllers
         [HttpGet]
         public List<Appointment> GetAllAppointments()
         {
+
            return DataAbstractionLayer.SelectAllAppointments();
+
         }
 
         [HttpGet("filter/pro")]
@@ -33,7 +36,6 @@ namespace projet2Appointment.Controllers
         {
             return DataAbstractionLayer.SelectPersoAppointments(); 
         }
-
         [HttpGet("filter/importance")]
         public List<Appointment> GetImportantAppointments()
         {
@@ -81,13 +83,9 @@ namespace projet2Appointment.Controllers
 
        
         [HttpDelete]
-        public List<Appointment> DeleteAppointment(Int32 id)
+        public HttpResponseMessage DeleteMyAppointment(Appointment appointmentToDelete)
         {
-            if (myList.Count > 0)
-            {
-                myList.RemoveAt(id);
-            }
-            return myList;
+            return DataAbstractionLayer.DeleteMyAppointment(appointmentToDelete);
         }
     }
 }
