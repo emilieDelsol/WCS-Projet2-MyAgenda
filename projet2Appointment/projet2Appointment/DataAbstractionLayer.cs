@@ -162,7 +162,8 @@ namespace projet2Appointment
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Pro=1)";
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
+
 
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
@@ -194,7 +195,7 @@ namespace projet2Appointment
         {
             SqlCommand command = _connection.CreateCommand();
             command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Perso=1)";
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
 
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();

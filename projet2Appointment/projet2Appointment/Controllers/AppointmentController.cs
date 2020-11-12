@@ -40,7 +40,6 @@ namespace projet2Appointment.Controllers
             return DataAbstractionLayer.SelectImportantAppointments(importanceFilter);            
         }
 
-        [HttpGet("filter/importance/pro")]
         [HttpGet("filter/pro/importance")]
         public List<Appointment>GetImportancePro([FromQuery(Name = "importanceFilter")] String importanceFilter)
         {
