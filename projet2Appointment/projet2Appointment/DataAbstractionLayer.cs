@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net;
 
 namespace projet2Appointment
 {
@@ -246,15 +249,174 @@ namespace projet2Appointment
             reader.Close();
             return appointments;
         }
+
+
+        public static List<Appointment> SelectBetweenDateImportance(String beginDateFilter, String endDateFilter)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter AND Importance = 1)";
+            command.Parameters.AddWithValue("@beginDateFilter", beginDateFilter);
+            command.Parameters.AddWithValue("@endDateFilter", endDateFilter);
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
+
+        public static List<Appointment> SelectBetweenDatePro(String beginDateFilter, String endDateFilter)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter AND Pro = 1)";
+            command.Parameters.AddWithValue("@beginDateFilter", beginDateFilter);
+            command.Parameters.AddWithValue("@endDateFilter", endDateFilter);
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
+        public static List<Appointment> SelectBetweenDatePerso(String beginDateFilter, String endDateFilter)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter AND Perso = 1)";
+            command.Parameters.AddWithValue("@beginDateFilter", beginDateFilter);
+            command.Parameters.AddWithValue("@endDateFilter", endDateFilter);
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
+
+        public static List<Appointment> SelectBetweenDatePersoImportance(String beginDateFilter, String endDateFilter)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter AND Perso = 1 AND Importance = 1)";
+            command.Parameters.AddWithValue("@beginDateFilter", beginDateFilter);
+            command.Parameters.AddWithValue("@endDateFilter", endDateFilter);
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
+
+        public static List<Appointment> SelectBetweenDateProImportance(String beginDateFilter, String endDateFilter)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Appointment WHERE (BeginDate>=@beginDateFilter AND BeginDate<=@endDateFilter AND Pro = 1 AND Importance = 1)";
+            command.Parameters.AddWithValue("@beginDateFilter", beginDateFilter);
+            command.Parameters.AddWithValue("@endDateFilter", endDateFilter);
+            SqlDataReader reader = command.ExecuteReader();
+            List<Appointment> appointments = new List<Appointment>();
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment
+                {
+                    Id = reader.GetInt32(0),
+                    Rdv = reader.GetString(1),
+                    BeginDate = reader.GetDateTime(2),
+                    EndDate = reader.GetDateTime(3),
+                    Description = reader.GetString(4),
+                    Address = reader.GetString(5),
+                    Contact = reader.GetString(6),
+                    Email = reader.GetString(7),
+                    Phone = reader.GetString(8),
+                    Importance = reader.GetInt32(9),
+                    Recurrence = reader.GetBoolean(10),
+                    Pro = reader.GetBoolean(12),
+                    Perso = reader.GetBoolean(13)
+                };
+                appointments.Add(appointment);
+            }
+            reader.Close();
+            return appointments;
+        }
         
-
-
         public static Appointment InsertAppointment(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
 
             command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
                 "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
+
 
            
             command.Parameters.AddWithValue("@rdv",userEntry.Rdv);
@@ -265,13 +427,15 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@contact", ((object)userEntry.Contact) ?? DBNull.Value);
             command.Parameters.AddWithValue("@email", ((object)userEntry.Email) ?? DBNull.Value);
             command.Parameters.AddWithValue("@phone", ((object)userEntry.Phone) ?? DBNull.Value);
-            command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? false);
+            command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? DBNull.Value);
             command.Parameters.AddWithValue("@recurence", ((object)userEntry.Recurrence) ?? false);
+          /*  command.Parameters.AddWithValue("@recurenceEndDate", ((object)userEntry.RecurrenceEndDate) ?? false);
+            command.Parameters.AddWithValue("@recurence", ((object)userEntry.Frequence) ?? false);*/
             command.Parameters.AddWithValue("@reminder", ((object)userEntry.Reminder) ?? false);
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
           
-
+            
             
             command.ExecuteNonQuery();
             
@@ -306,6 +470,7 @@ namespace projet2Appointment
             return userEntry;
 
         }
+
 
         public static List<Appointment> SearchByWord(String wordSearch)
         {
@@ -357,6 +522,24 @@ namespace projet2Appointment
             return appointments;
         }
         
+
+        public static HttpResponseMessage DeleteMyAppointment(Appointment appointmentToDelete)
+        {
+            SqlCommand command = _connection.CreateCommand();
+
+            Appointment appointment = new Appointment();
+           
+            appointment.Id = appointmentToDelete.Id;
+            
+            command.CommandText = "DELETE Appointment WHERE IdAppointment = @userEntryIdTodelete";
+
+            command.Parameters.AddWithValue("@userEntryIdTodelete", appointment.Id);
+           
+            command.ExecuteNonQuery();
+            return new HttpResponseMessage( HttpStatusCode.Accepted );
+
+        }
+
 
         public static void Close()
         {
