@@ -85,7 +85,7 @@ namespace projet2Appointment.Controllers
         public Appointment ModifyAppointment(Appointment myUserEntry)
         {
             
-            return DataAbstractionLayer.PutAppointments(myUserEntry);
+            return DataAbstractionLayer.UpdateAppointment(myUserEntry);
         }
 
 
