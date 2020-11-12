@@ -36,6 +36,8 @@ namespace projet2Appointment
                                 "ISNULL(Phone, '')," +
                                 "ISNULL(Importance, 0)," +
                                 "ISNULL(Recurence, 0)," +
+                                "ISNULL(Frequence, 0)," +
+                                "ISNULL(NumberOfRecurrence, 0)," +
                                 "ISNULL(Reminder, 0)," +
                                 "ISNULL(Pro, 0)," +
                                 "ISNULL(Perso, 0)" +
@@ -58,8 +60,10 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetBoolean(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Pro = reader.GetBoolean(13),
+                    Perso = reader.GetBoolean(14)
                 }; //On peux auusi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
                 appointments.Add(appointment);
             }
@@ -251,27 +255,28 @@ namespace projet2Appointment
         public static Appointment InsertAppointments(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
-            
-            command.CommandText = "INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Reminder, Pro, Perso) " +
-                "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurence,@reminder,@pro,@perso);";
-
-           
-            command.Parameters.AddWithValue("@rdv",userEntry.Rdv);
+            command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
             command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
             command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
-            command.Parameters.AddWithValue("@description",((object)userEntry.Description) ?? DBNull.Value);
+            command.Parameters.AddWithValue("@description", ((object)userEntry.Description) ?? DBNull.Value);
             command.Parameters.AddWithValue("@address", ((object)userEntry.Address) ?? DBNull.Value);
             command.Parameters.AddWithValue("@contact", ((object)userEntry.Contact) ?? DBNull.Value);
             command.Parameters.AddWithValue("@email", ((object)userEntry.Email) ?? DBNull.Value);
             command.Parameters.AddWithValue("@phone", ((object)userEntry.Phone) ?? DBNull.Value);
             command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? false);
             command.Parameters.AddWithValue("@recurence", ((object)userEntry.Recurrence) ?? false);
+            command.Parameters.AddWithValue("@frequence", ((object)userEntry.Frequence) ?? DBNull.Value);
+            command.Parameters.AddWithValue("@numberOfRecurrence", ((object)userEntry.NumberOfRecurrence) ?? false);
             command.Parameters.AddWithValue("@reminder", ((object)userEntry.Reminder) ?? false);
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
-          
 
-            
+
+            command.CommandText = " DECLARE @r INT SET @r = 0 WHILE(@r <= @numberOfRecurrence) BEGIN INSERT INTO Appointment (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurence, Frequence, NumberOfRecurrence, Reminder, Pro, Perso) " +
+                            "VALUES (@rdv,@beginDate+@r, @endDate+@r, @description, @address, @contact,@email,@phone,@importance,@recurence,@frequence, @numberOfRecurrence, @reminder,@pro,@perso) SET @r = @r + 1 END ;";
+
+
+
             command.ExecuteNonQuery();
             
             
@@ -279,7 +284,9 @@ namespace projet2Appointment
             return userEntry;
         }
 
-         public static Appointment PutAppointments(Appointment userEntry)
+       
+
+        public static Appointment PutAppointments(Appointment userEntry)
         {
             SqlCommand command = _connection.CreateCommand();
             

@@ -76,9 +76,11 @@ namespace projet2Appointment.Controllers
 
         [HttpPost]
         public Appointment InsertMyAppointment(Appointment myUserEntry)
-        {   
-            return DataAbstractionLayer.InsertAppointments(myUserEntry);   
+        {
+            return DataAbstractionLayer.InsertAppointments(myUserEntry);
         }
+
+
 
 
         [HttpPut]
