@@ -56,7 +56,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -86,7 +86,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -115,7 +115,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -126,10 +126,12 @@ namespace projet2Appointment
             return appointments;
         }
 
-         public static List<Appointment> SelectImportantAppointments()
+         public static List<Appointment> SelectImportantAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
+
             SqlDataReader reader  = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
@@ -145,7 +147,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -156,10 +158,12 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> SelectImportantProAppointments()
+        public static List<Appointment> SelectImportantProAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Pro=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Pro=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
@@ -175,7 +179,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -186,10 +190,12 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> SelectImportantPersoAppointments()
+        public static List<Appointment> SelectImportantPersoAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Perso=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Perso=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
@@ -205,7 +211,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -236,7 +242,7 @@ namespace projet2Appointment
                     Contact = reader.GetString(6),
                     Email = reader.GetString(7),
                     Phone = reader.GetString(8),
-                    Importance = reader.GetBoolean(9),
+                    Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
@@ -265,7 +271,7 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@contact", ((object)userEntry.Contact) ?? DBNull.Value);
             command.Parameters.AddWithValue("@email", ((object)userEntry.Email) ?? DBNull.Value);
             command.Parameters.AddWithValue("@phone", ((object)userEntry.Phone) ?? DBNull.Value);
-            command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? false);
+            command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? DBNull.Value);
             command.Parameters.AddWithValue("@recurence", ((object)userEntry.Recurrence) ?? false);
             command.Parameters.AddWithValue("@reminder", ((object)userEntry.Reminder) ?? false);
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
