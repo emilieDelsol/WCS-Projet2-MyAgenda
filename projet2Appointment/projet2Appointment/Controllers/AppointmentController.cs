@@ -130,6 +130,7 @@ namespace projet2Appointment.Controllers
         [HttpPut]
         public Appointment PutAppointment(Appointment myUserEntry)
         {
+
             return DataAbstractionLayer.UpdateAppointment(myUserEntry);
         }
 
