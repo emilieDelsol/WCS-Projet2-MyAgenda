@@ -135,10 +135,12 @@ namespace projet2Appointment
             return appointments;
         }
 
-         public static List<Appointment> SelectImportantAppointments()
+         public static List<Appointment> SelectImportantAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
+
             SqlDataReader reader  = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
@@ -165,10 +167,13 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> SelectImportantProAppointments()
+        public static List<Appointment> SelectImportantProAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Pro=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Pro=1)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
+
+
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())
@@ -195,10 +200,12 @@ namespace projet2Appointment
             return appointments;
         }
 
-        public static List<Appointment> SelectImportantPersoAppointments()
+        public static List<Appointment> SelectImportantPersoAppointments(String importanceFilter)
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=1 AND Perso=1)";
+            command.CommandText = "SELECT * FROM Appointment WHERE (Importance=@importanceFilter AND Perso=1)";
+            command.Parameters.AddWithValue("@importanceFilter", importanceFilter);
+
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
             while (reader.Read())

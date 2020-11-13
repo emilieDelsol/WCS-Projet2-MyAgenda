@@ -40,28 +40,33 @@ namespace projet2Appointment.Controllers
             return DataAbstractionLayer.SelectPersoAppointments(); 
         }
         [HttpGet("filter/importance")]
-        public List<Appointment> GetImportantAppointments()
+        public List<Appointment> GetImportantAppointments([FromQuery(Name = "importanceFilter")] String importanceFilter)
         {
-            List<Appointment> listFilterImportance = new List<Appointment>();                      
-            return DataAbstractionLayer.SelectImportantAppointments();            
+
+            return DataAbstractionLayer.SelectImportantAppointments(importanceFilter);            
+
         }
 
-        [HttpGet("filter/importance/pro")]
         [HttpGet("filter/pro/importance")]
 
-        public List<Appointment> GetFilterImportancePro()
+        public List<Appointment>GetImportancePro([FromQuery(Name = "importanceFilter")] String importanceFilter)
+
+
         {
             List<Appointment> listFilterImportancePro = new List<Appointment>();
-            return DataAbstractionLayer.SelectImportantProAppointments();
+            return DataAbstractionLayer.SelectImportantProAppointments(importanceFilter);
 
         }
 
         [HttpGet("filter/importance/perso")]
         [HttpGet("filter/perso/importance")]
-        public List<Appointment> GetImportancePerso()
+        public List<Appointment> GetImportancePerso([FromQuery(Name = "importanceFilter")] String importanceFilter)
         {
             List<Appointment> listFilterImportancePro = new List<Appointment>();
-            return DataAbstractionLayer.SelectImportantPersoAppointments();
+
+            return DataAbstractionLayer.SelectImportantPersoAppointments(importanceFilter);
+
+
         }
 
         [HttpGet("filter/date")]
