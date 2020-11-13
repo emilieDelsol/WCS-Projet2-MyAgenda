@@ -66,8 +66,9 @@ namespace projet2Appointment
                     Recurrence = reader.GetBoolean(10),
                     Frequence = reader.GetInt32(11),
                     NumberOfRecurrence = reader.GetInt32(12),
-                    Pro = reader.GetBoolean(13),
-                    Perso = reader.GetBoolean(14)
+                    Reminder=reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 }; //On peux auusi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
 
                 appointments.Add(appointment);
@@ -97,8 +98,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -126,8 +130,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -158,8 +165,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -191,8 +201,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -223,8 +236,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -254,8 +270,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -288,8 +307,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -320,8 +342,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -351,8 +376,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -383,8 +411,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -415,8 +446,11 @@ namespace projet2Appointment
                     Phone = reader.GetString(8),
                     Importance = reader.GetInt32(9),
                     Recurrence = reader.GetBoolean(10),
-                    Pro = reader.GetBoolean(12),
-                    Perso = reader.GetBoolean(13)
+                    Frequence = reader.GetInt32(11),
+                    NumberOfRecurrence = reader.GetInt32(12),
+                    Reminder = reader.GetBoolean(13),
+                    Pro = reader.GetBoolean(14),
+                    Perso = reader.GetBoolean(15)
                 };
                 appointments.Add(appointment);
             }
@@ -444,7 +478,7 @@ namespace projet2Appointment
             command.Parameters.AddWithValue("@importance", ((object)userEntry.Importance) ?? DBNull.Value);
             command.Parameters.AddWithValue("@recurence", ((object)userEntry.Recurrence) ?? false);
             command.Parameters.AddWithValue("@frequence", ((object)userEntry.Frequence) ?? DBNull.Value);
-            command.Parameters.AddWithValue("@numberOfRecurrence", ((object)userEntry.NumberOfRecurrence) ?? false);
+            command.Parameters.AddWithValue("@numberOfRecurrence", ((object)userEntry.NumberOfRecurrence) ?? DBNull.Value);
             command.Parameters.AddWithValue("@reminder", ((object)userEntry.Reminder) ?? false);
             command.Parameters.AddWithValue("@pro", ((object)userEntry.Pro) ?? false);
             command.Parameters.AddWithValue("@perso", ((object)userEntry.Perso) ?? false);
