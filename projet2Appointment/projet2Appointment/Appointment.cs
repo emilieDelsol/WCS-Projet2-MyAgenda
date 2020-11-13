@@ -29,7 +29,12 @@ namespace projet2Appointment
 
         public bool Recurrence { get; set; }
 
+        public int Frequence { get; set; }
+
+        public int NumberOfRecurrence { get; set; }
+        
         public bool Reminder { get; set; }
+
 
         public bool Pro { get; set; }
 
