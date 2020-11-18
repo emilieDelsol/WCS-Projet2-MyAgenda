@@ -78,12 +78,12 @@ namespace projet2Appointment.Controllers
 
         [HttpGet("searchByWord")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetByWord([FromQuery(Name = "wordSearch")] String wordSearch)
         {
             if ((wordSearch)==null)
             {
-                return NotFound();
+                return BadRequest();
             }
            return Ok( DataAbstractionLayer.SearchByWord(wordSearch));
         }

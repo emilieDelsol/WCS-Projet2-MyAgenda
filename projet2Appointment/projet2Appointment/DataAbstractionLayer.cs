@@ -686,7 +686,6 @@ namespace projet2Appointment
                                 "ORDER BY BeginDate";
 
             command.Parameters.AddWithValue("@wordSearch", ((object)wordSearch) ?? DBNull.Value);
-            //command.Parameters.AddWithValue("@wordSearch", wordSearch);
 
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
