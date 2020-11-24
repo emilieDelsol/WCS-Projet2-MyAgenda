@@ -684,8 +684,8 @@ namespace projet2Appointment
                                 "OR Contact LIKE '%' + @wordSearch + '%'" +
                                 "OR Email LIKE '%' + @wordSearch + '%'" +
                                 "ORDER BY BeginDate";
-            command.Parameters.AddWithValue("@wordSearch", wordSearch);
 
+            command.Parameters.AddWithValue("@wordSearch", ((object)wordSearch) ?? DBNull.Value);
 
             SqlDataReader reader = command.ExecuteReader();
             List<Appointment> appointments = new List<Appointment>();
@@ -706,10 +706,11 @@ namespace projet2Appointment
                     Recurrence = reader.GetBoolean(10),
                     Pro = reader.GetBoolean(12),
                     Perso = reader.GetBoolean(13)
-                }; //On peux aussi appeler les elements avec reader[0] a la place de reader.GetInt32(0)
+                };
                 appointments.Add(appointment);
             }
             reader.Close();
+            
             return appointments;
         }
         

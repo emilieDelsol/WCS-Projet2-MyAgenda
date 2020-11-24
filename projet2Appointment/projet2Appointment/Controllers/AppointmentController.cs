@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -76,9 +77,15 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpGet("searchByWord")]
-        public List<Appointment> GetByWord([FromQuery(Name = "wordSearch")] String wordSearch)
-        {    
-            return DataAbstractionLayer.SearchByWord(wordSearch);
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetByWord([FromQuery(Name = "wordSearch")] String wordSearch)
+        {
+            if ((wordSearch)==null)
+            {
+                return BadRequest();
+            }
+           return Ok( DataAbstractionLayer.SearchByWord(wordSearch));
         }
 
         [HttpGet("filter/importance/date")]
