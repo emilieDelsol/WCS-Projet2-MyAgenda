@@ -16,7 +16,6 @@ namespace projet2Appointment.Controllers
     {
         
         private static List<Appointment> myList = new List<Appointment>();
-        public ModifyList modifyList = new ModifyList();
 
         [HttpGet]
         public List<Appointment> GetAllAppointments()
@@ -132,14 +131,24 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpPost]
-        public Appointment PostMyAppointment(Appointment myUserEntry)
-        {   
-            return DataAbstractionLayer.InsertAppointment(myUserEntry);   
-        }
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult  PostMyAppointment(Appointment myUserEntry)
+        {   
+            if ( DataAbstractionLayer.InsertAppointment(myUserEntry))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+       
         [HttpPut]
+         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult PutAppointment(Appointment myUserEntry)
         {
             if (DataAbstractionLayer.UpdateAppointment(myUserEntry))
