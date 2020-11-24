@@ -132,22 +132,24 @@ namespace projet2Appointment.Controllers
         }
 
         [HttpPost]
-
-
         public Appointment PostMyAppointment(Appointment myUserEntry)
         {   
             return DataAbstractionLayer.InsertAppointment(myUserEntry);   
-
         }
 
-
-
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut]
-        public Appointment PutAppointment(Appointment myUserEntry)
+        public IActionResult PutAppointment(Appointment myUserEntry)
         {
-
-            return DataAbstractionLayer.UpdateAppointment(myUserEntry);
+            if (DataAbstractionLayer.UpdateAppointment(myUserEntry))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
 
