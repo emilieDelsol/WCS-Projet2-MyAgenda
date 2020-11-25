@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import AltMenu from "./components/AltMenu";
 import Formulaire from "./components/Formulaire";
-import FormulaireReact from "./components/FormulaireReact";
+import FormulaireModify from "./components/FormulaireModify";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AppointmentsList from "./components/AppointmentList";
@@ -43,7 +43,7 @@ export default function App() {
               onClick={goForm2}
               className={`onglets ${stateOnglets === 3 ? "active" : ""}`}
             >
-              <h1>another form</h1>
+              <h1>Modify an appointment</h1>
             </div>
           </div>
 
@@ -73,7 +73,7 @@ export default function App() {
             ) : (
               <div className="cont">
                 <section className="formulaire">
-                  <FormulaireReact />
+                  <FormulaireModify />
                 </section>
               </div>
             )}

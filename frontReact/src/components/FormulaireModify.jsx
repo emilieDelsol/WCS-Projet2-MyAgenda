@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/Formulaire.css";
 
-class Formulaire extends React.Component {
+class FormulaireModify extends React.Component {
   state = {
     Rdv: "",
     beginDate: "",
@@ -21,7 +21,7 @@ class Formulaire extends React.Component {
     console.log(this.state);
     event.preventDefault();
     const requestOptions = {
-      method: "POST",
+      method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(this.state)
     };
@@ -35,11 +35,11 @@ class Formulaire extends React.Component {
     return (
       <form
         action="http://localhost:54150/appointment/"
-        method="post"
+        method="DELETE"
         onSubmit={(event) => this.handleSubmitForm(event)}
       >
         <fieldset>
-        <legend id="legend">Post an appointment:</legend>
+       
 
         <div>
           <label>
@@ -65,7 +65,7 @@ class Formulaire extends React.Component {
               min="2018-06-07T00:00"
               max="2050-06-14T00:00"
               onChange={this.handleForm}
-              required
+              
             />
           </label>
         </div>
@@ -81,7 +81,7 @@ class Formulaire extends React.Component {
               min="2018-06-07T00:00"
               max="2050-06-14T00:00"
               onChange={this.handleForm}
-              required
+              
             />
           </label>
         </div>
@@ -196,8 +196,9 @@ class Formulaire extends React.Component {
 
         <input type="submit" value="Submit" />
         </fieldset>
+    
       </form>
     );
   }
 }
-export default Formulaire;
+export default FormulaireModify;
