@@ -3,7 +3,6 @@ import "./css/Formulaire.css";
 
 class Formulaire extends React.Component {
   state = {
-    AppointmentId: "",
     Rdv: "",
     beginDate: "",
     endDate: "",
@@ -12,17 +11,21 @@ class Formulaire extends React.Component {
     contact: "",
     email: "",
     phone: "",
-    importance: false,
+    importance: 0,
     recurrence: false,
     numberOfRecurrence: 0,
-    reminder: false,
-    pro: false,
-    perso: false
+    pro: false
   };
 
   handleSubmitForm(event) {
     console.log(this.state);
     event.preventDefault();
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.state)
+    };
+    fetch("http://localhost:54150/appointment", requestOptions);
   }
   handleForm = (event) => {
     this.setState({ [event.target.name]: event.target.value });
