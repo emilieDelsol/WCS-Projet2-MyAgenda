@@ -29,46 +29,17 @@ namespace projet2Appointment
             return _connection;
         }
 
-        public static List<Appointment> SelectAllAppointments()
+        public static IEnumerable<Appointment> SelectAllAppointments()
         {
             SqlCommand command = _connection.CreateCommand();
-            command.CommandText = "SELECT IdAppointment, Rdv, BeginDate, EndDate," +
-                                "ISNULL(AppointmentDescription, '')," +
-                                "ISNULL(AppointmentAddress, '')," +
-                                "ISNULL(Contact, '')," +
-                                "ISNULL(Email, '')," +
-                                "ISNULL(Phone, '')," +
-                                "ISNULL(Importance, 0)," +
-                                "ISNULL(recurrence, 0)," +
-                                "ISNULL(Frequence, 0)," +
-                                "ISNULL(NumberOfRecurrence, 0)," +
-                                "ISNULL(Pro, 0)" +
-                                "FROM Appointment " +
-                                "ORDER BY BeginDate";
             SqlDataReader reader = command.ExecuteReader();
-            List<Appointment> appointments = new List<Appointment>();
-            while (reader.Read())
-            {
-                Appointment appointment = new Appointment
-                {
-                    Id = reader.GetInt32(0),
-                    Rdv = reader.GetString(1),
-                    BeginDate = reader.GetDateTime(2),
-                    EndDate = reader.GetDateTime(3),
-                    Description = reader.GetString(4),
-                    Address = reader.GetString(5),
-                    Contact = reader.GetString(6),
-                    Email = reader.GetString(7),
-                    Phone = reader.GetString(8),
-                    Importance = reader.GetInt32(9),
-                    Recurrence = reader.GetBoolean(10),
-                    Frequence = reader.GetInt32(11),
-                    NumberOfRecurrence = reader.GetInt32(12),
-                    Pro = reader.GetBoolean(13),
-                };
 
-                appointments.Add(appointment);
-            }
+            IEnumerable<Criteria> criterias = new List<Criteria>
+            {
+                
+            };
+            IEnumerable<Appointment> appointments = AppointmentRepository.SelectAppointments(criterias);
+            
             reader.Close();
             return appointments;
         }

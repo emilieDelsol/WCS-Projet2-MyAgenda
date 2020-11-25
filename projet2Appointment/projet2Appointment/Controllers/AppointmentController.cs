@@ -25,6 +25,13 @@ namespace projet2Appointment.Controllers
 
         }
 
+        [HttpGet("filter/")]
+        public IEnumerable<Criteria> GetProAppointments()
+        {
+            List<Appointment> listFilterPro = new List<Appointment>();
+            return DataAbstractionLayer.SelectProAppointments();
+        }
+
         [HttpGet("filter/pro")]
         public List<Appointment> GetProAppointments()
         {
