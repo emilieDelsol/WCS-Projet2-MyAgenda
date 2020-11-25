@@ -44,6 +44,7 @@ function AppointmentsList({ url }) {
       <table>
         <thead>
           <tr>
+            <th>Id</th>
             <th>Title</th>
             <th>Begin date</th>
             <th>End date</th>

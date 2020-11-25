@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/Formulaire.css";
 
 class Formulaire extends React.Component {
   state = {
