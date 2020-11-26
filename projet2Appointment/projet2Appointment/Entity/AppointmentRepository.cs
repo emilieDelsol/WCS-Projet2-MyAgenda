@@ -20,9 +20,9 @@ namespace projet2Appointment
                                  ISNULL(recurrence, 0),
                                  ISNULL(Frequence, 0),
                                  ISNULL(NumberOfRecurrence, 0),
-                                 ISNULL(Pro, 0) ";
+                                 ISNULL(Pro, 0)";
 
-            while (reader.Read)
+            while (reader.Read())
             {
                 Appointment appointment = new Appointment
                 {
