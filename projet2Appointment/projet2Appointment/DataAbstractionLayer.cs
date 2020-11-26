@@ -29,18 +29,13 @@ namespace projet2Appointment
             return _connection;
         }
 
-        public static IEnumerable<Appointment> SelectAllAppointments()
+        public static IEnumerable<Appointment> SelectAllAppointments(Criteria userEntry)
         {
-            SqlCommand command = _connection.CreateCommand();
-            SqlDataReader reader = command.ExecuteReader();
 
-            IEnumerable<Criteria> criterias = new List<Criteria>
-            {
-                
-            };
-            IEnumerable<Appointment> appointments = AppointmentRepository.SelectAppointments(criterias);
+            Criteria criteria = userEntry;
+            IEnumerable<Appointment> appointments = AppointmentRepository.SelectAppointments(criteria);
             
-            reader.Close();
+           
             return appointments;
         }
 
