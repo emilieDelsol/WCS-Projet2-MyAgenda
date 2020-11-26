@@ -11,7 +11,7 @@ class Formulaire extends React.Component {
     contact: "",
     email: "",
     phone: "",
-    importance: 0,
+    importance: "",
     recurrence: false,
     numberOfRecurrence: 0,
     pro: false
@@ -176,11 +176,11 @@ class Formulaire extends React.Component {
           <label>
             every:
             <select onChange={this.handleForm}>
-              <option type="number">Year</option>
-              <option type="number">Month</option>
-              <option type="number">Week</option>
-              <option type="number">day</option>
-              <option type="number">Hours</option>
+              <option type="number" >1</option>
+              <option type="number">2</option>
+              <option type="number">3</option>
+              <option type="number">4</option>
+              <option type="number">5</option>
             </select>
           </label>
           <label>
