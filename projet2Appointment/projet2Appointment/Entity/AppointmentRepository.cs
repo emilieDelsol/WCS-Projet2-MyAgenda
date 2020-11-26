@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,8 +8,26 @@ namespace projet2Appointment
 {
     public class AppointmentRepository
     {
-        public static IEnumerable<Appointment> SelectAppointments(IEnumerable<Criteria> criterias)
+        private static SqlConnection _connection = new SqlConnection();
+
+        public static void Open(SqlConnectionStringBuilder stringBuilder)
         {
+            _connection.ConnectionString = stringBuilder.ConnectionString;
+            if (_connection.State == System.Data.ConnectionState.Closed)
+            {
+                _connection.Open();
+            }
+        }
+
+        public static SqlConnection GetConnection()
+        {
+            return _connection;
+        }
+        public static IEnumerable<Appointment> SelectAppointments(Criteria criteria)
+        {
+            SqlCommand command = _connection.CreateCommand();
+            SqlDataReader reader = command.ExecuteReader();
+
             IList<Appointment> appointments = new List<Appointment>();
             String query = @"SELECT IdAppointment, Rdv, BeginDate, EndDate,
                                  ISNULL(AppointmentDescription, ''),
@@ -45,6 +64,8 @@ namespace projet2Appointment
 
             query += " FROM Appointment";
 
+
+            query += "WHERE blablabla";
             return appointments.OrderBy((a) => a.BeginDate);
         }
     }
