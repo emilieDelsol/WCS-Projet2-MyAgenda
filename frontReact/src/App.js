@@ -46,7 +46,7 @@ export default function App() {
               <h1>Modify an appointment</h1>
             </div>
           </div>
-
+          
           <div className="container">
             {stateOnglets === 1 ? (
               <div className="cont">
@@ -58,6 +58,27 @@ export default function App() {
                       Application React pour la présentation des requêtes vers
                       l'api MyAgenda
                     </p>
+                    <h2 class="center">Recherche par mot clé:</h2>
+
+                    <form action="http://localhost:54150/appointment/searchByWord" method="get" target="blanck" class="getone center">
+                          <input type="text" name="wordSearch" id=""/>
+                          <input type="submit" value="RECHERCHER"/>
+                      </form>
+
+                      <h2 class="center">Recherche entre 2 dates:</h2>
+
+                      <form action="http://localhost:54150/appointment/filter/date" method="get" target="blanck" class="getone center">
+                          <label>
+                              Date de début:
+                              <input type="datetime" name="beginDateFilter" id="" placeholder="jj/mm/aaaa hh:mm"/>
+                          </label>
+                          <label>date de fin:
+                              <input type="datetime" name="endDateFilter" id="" placeholder="jj/mm/aaaa hh:mm"/>
+                          </label>
+                          
+
+                          <input type="submit" value="RECHERCHER"/>
+                      </form>
                   </Route>
                   <Route path="/:appointmentCat">
                     <AppointmentsList />

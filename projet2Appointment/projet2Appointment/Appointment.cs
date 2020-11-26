@@ -34,9 +34,6 @@ namespace projet2Appointment
         public int NumberOfRecurrence { get; set; }
         
         public bool Pro { get; set; }
-
-
-        
     }
    
 

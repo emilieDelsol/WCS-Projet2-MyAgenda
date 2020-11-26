@@ -40,6 +40,7 @@ function AppointmentsList({ url }) {
 
   return (
     <div className="cont">
+      
       <h2>Listes des rendez-vous</h2>
       <table>
         <thead>
@@ -73,6 +74,20 @@ function AppointmentsList({ url }) {
             ))}
         </tbody>
       </table>
+      <div>
+      <h2 class="center">Suppimer un RDV:</h2>
+
+      <form method="post" action="http://localhost:54150/appointment?">
+      <input type="number" name="delete" value="DELETE"/>
+      <input type="submit" value="SUPPRIMMER"/>
+      </form>
+      
+        <form action="http://localhost:54150/appointment" method="delete" class="delete center">
+            <input type="text" name="delete" id="" placeholder="entrez un id"/>
+            <input type="submit" value="SUPPRIMMER"/>
+        </form>
+      </div>
+      
     </div>
   );
 }

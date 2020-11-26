@@ -130,7 +130,7 @@ namespace projet2Appointment
                                 "ISNULL(Recurrence, 0)," +
                                 "ISNULL(Frequence, 0)," +
                                 "ISNULL(NumberOfRecurrence, 0)," +
-                                "ISNULL(Pro, 0)," +
+                                "ISNULL(Pro, 0)" +
                                 "FROM Appointment " +
                                 "WHERE Rdv LIKE '%'+@wordSearch+'%'" +
                                 "OR AppointmentDescription LIKE '%'+@wordSearch+'%' " +
@@ -702,7 +702,7 @@ namespace projet2Appointment
 
             if (userEntry.Address != null)
             {
-                command.CommandText += ","+"AppoinmentAddress=@address" ;
+                command.CommandText += ","+"AppointmentAddress=@address" ;
                 command.Parameters.AddWithValue("@address", userEntry.Address);
             }
 
@@ -724,7 +724,7 @@ namespace projet2Appointment
                 command.Parameters.AddWithValue("@phone", userEntry.Phone);
             }
 
-            if (userEntry.Importance >0)
+            if (userEntry.Importance !=0)
             {
                 command.CommandText += ","+"Importance=@importance";
                 command.Parameters.AddWithValue("@importance", userEntry.Importance);
@@ -736,13 +736,13 @@ namespace projet2Appointment
                 command.Parameters.AddWithValue("@recurrence", userEntry.Recurrence);
             }
 
-            if (userEntry.Frequence>0)
+            if (userEntry.Frequence!=0)
             {
                 command.CommandText += ","+"Frequence=@frequence" ;
                 command.Parameters.AddWithValue("@frequence", userEntry.Frequence);
             }
 
-            if (userEntry.NumberOfRecurrence>0)
+            if (userEntry.NumberOfRecurrence!=0)
             {
                 command.CommandText += ","+ "NumberOfRecurrence=@numberOfRecurrence" ;
                 command.Parameters.AddWithValue("@numberOfRecurrence", userEntry.NumberOfRecurrence);
@@ -759,6 +759,7 @@ namespace projet2Appointment
 
             command.CommandText += " WHERE IdAppointment=@idUserEntry" + ";";
             command.Parameters.AddWithValue("@idUserEntry", userEntry.Id);
+            Console.WriteLine(command.CommandText);
             Int32 affectedRowsCount = command.ExecuteNonQuery();
             if (affectedRowsCount < 1)
             {

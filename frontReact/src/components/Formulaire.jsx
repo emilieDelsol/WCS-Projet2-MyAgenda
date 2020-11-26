@@ -158,7 +158,6 @@ class Formulaire extends React.Component {
               name="importance"
               id="importance"
               type="number"
-              value="true"
               onChange={this.handleForm}
             />
           </label>
