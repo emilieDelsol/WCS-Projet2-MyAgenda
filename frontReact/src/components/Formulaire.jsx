@@ -11,10 +11,6 @@ class Formulaire extends React.Component {
     contact: "",
     email: "",
     phone: "",
-    importance: "",
-    recurrence: false,
-    numberOfRecurrence: 0,
-    pro: false
   };
 
   handleSubmitForm(event) {
@@ -26,7 +22,7 @@ class Formulaire extends React.Component {
       body: JSON.stringify(this.state)
     };
     fetch("http://localhost:54150/appointment", requestOptions);
-  }
+    alert('You have submitted the form.')  }
   handleForm = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -99,7 +95,7 @@ class Formulaire extends React.Component {
         </div>
 
         <div>
-          <label>Adress</label>
+          <label>Address</label>
           <input
             type="text"
             name="address"
@@ -136,62 +132,7 @@ class Formulaire extends React.Component {
             id="phone"
             onChange={this.handleForm}
           />
-        </div>
-
-        <div>
-          <label>
-            Pro :
-            <input
-              name="pro"
-              id="pro"
-              type="checkbox"
-              value="false"
-              onChange={this.handleForm}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Importance :
-            <input
-              name="importance"
-              id="importance"
-              type="number"
-              onChange={this.handleForm}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Recurrence :
-            <input
-              name="recurrence"
-              type="checkbox"
-              value="true"
-              onChange={this.handleForm}
-            />
-          </label>
-          <label>
-            every:
-            <select onChange={this.handleForm}>
-              <option type="number" >1</option>
-              <option type="number">2</option>
-              <option type="number">3</option>
-              <option type="number">4</option>
-              <option type="number">5</option>
-            </select>
-          </label>
-          <label>
-            Number of recurrence:
-            <input
-              name="numberOfRecurrence"
-              type="number"
-              onChange={this.handleForm}
-            />
-          </label>
-        </div>
+        </div>    
 
         <input type="submit" value="Submit" />
         </fieldset>

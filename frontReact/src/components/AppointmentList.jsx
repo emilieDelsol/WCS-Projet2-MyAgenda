@@ -41,7 +41,7 @@ function AppointmentsList({ url }) {
   return (
     <div className="cont">
       
-      <h2>Listes des rendez-vous</h2>
+      <h2>Appointments list:</h2>
       <table>
         <thead>
           <tr>
@@ -54,6 +54,7 @@ function AppointmentsList({ url }) {
             <th>Contact</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Importance</th>
           </tr>
         </thead>
         <tbody>
