@@ -37,5 +37,25 @@ namespace projet2Appointment.Extensions
 
             return parameters.AddWithValue(name, value);
         }
+
+        /// <summary>
+        /// Adds a value to the end of the <see cref="System.Data.SqlClient.SqlParameterCollection">SqlParameterCollection</see>
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="name">Parameter name</param>
+        /// <param name="value">Parameter value</param>
+        /// <param name="registerValue">Replacement for value if value is null</param>
+        /// <returns>A <see cref="System.Data.SqlClient.SqlParameter"/> object</returns>
+        public static SqlParameter AddWithRegisterValue(this SqlParameterCollection parameters, String name, object value, Object registerValue)
+        {          
+             
+
+              if (value is null)
+            {
+                value = registerValue;
+            }
+            return parameters.AddWithValue(name, value);
+
+        }
     }
 }

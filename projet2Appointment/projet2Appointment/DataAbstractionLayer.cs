@@ -673,89 +673,33 @@ namespace projet2Appointment
 
             SqlCommand command = _connection.CreateCommand();
 
-            command.CommandText = "UPDATE Appointment SET ";
+            List<Appointment> myList = DataAbstractionLayer.SelectAllAppointments();
+            Appointment registerAppointment = new Appointment();
+//            registerAppointment = myList[userEntry.Id];
+            foreach(Appointment appointment in myList)
+			{
+				if (appointment.Id == userEntry.Id)
+				{
+                    registerAppointment = appointment;
+				}
+			}
 
-            if (userEntry.Rdv != null)
-            {
-                command.CommandText += "Rdv=@rdv";
-                
-                command.Parameters.AddWithValue("@rdv", userEntry.Rdv);
-            }
+            command.CommandText = "UPDATE Appointment SET (Rdv, BeginDate, EndDate, AppointmentDescription, AppointmentAddress, Contact, Email, Phone, Importance, Recurrence, Pro) " +
+                "VALUES (@rdv,@beginDate, @endDate, @description, @address, @contact,@email,@phone,@importance,@recurrence,@reminder,@pro,@perso)";
 
-            if (userEntry.BeginDate != null)
-            {
-                command.CommandText += ","+ "BeginDate=@beginDate";
-                command.Parameters.AddWithValue("@beginDate", userEntry.BeginDate);
-            }
-
-            if (userEntry.EndDate != null)
-            {
-                command.CommandText += ","+ "EndDate=@endDate" ;
-                command.Parameters.AddWithValue("@endDate", userEntry.EndDate);
-            }
-
-            if (userEntry.Description != null)
-            {
-                command.CommandText += ","+"AppointmentDescription=@description" ;
-                command.Parameters.AddWithValue("@description", userEntry.Description);
-            }
-
-            if (userEntry.Address != null)
-            {
-                command.CommandText += ","+"AppointmentAddress=@address" ;
-                command.Parameters.AddWithValue("@address", userEntry.Address);
-            }
-
-            if (userEntry.Contact != null)
-            {
-                command.CommandText += ","+"Contact=@contact" ;
-                command.Parameters.AddWithValue("@contact", userEntry.Contact);
-            }
-
-            if (userEntry.Email != null)
-            {
-                command.CommandText += ","+"Email=@email" ;
-                command.Parameters.AddWithValue("@email", userEntry.Email);
-            }
-
-            if (userEntry.Phone != null)
-            {
-                command.CommandText += ","+"Phone=@phone" ;
-                command.Parameters.AddWithValue("@phone", userEntry.Phone);
-            }
-
-            if (userEntry.Importance !=0)
-            {
-                command.CommandText += ","+"Importance=@importance";
-                command.Parameters.AddWithValue("@importance", userEntry.Importance);
-            }
-
-            if (userEntry.Recurrence)
-            {
-                command.CommandText += ","+"Recurrence=@recurrence" ;
-                command.Parameters.AddWithValue("@recurrence", userEntry.Recurrence);
-            }
-
-            if (userEntry.Frequence!=0)
-            {
-                command.CommandText += ","+"Frequence=@frequence" ;
-                command.Parameters.AddWithValue("@frequence", userEntry.Frequence);
-            }
-
-            if (userEntry.NumberOfRecurrence!=0)
-            {
-                command.CommandText += ","+ "NumberOfRecurrence=@numberOfRecurrence" ;
-                command.Parameters.AddWithValue("@numberOfRecurrence", userEntry.NumberOfRecurrence);
-            }
-
-            if (userEntry.Pro)
-            {
-                command.CommandText += ","+"Pro=@pro" ;
-                command.Parameters.AddWithValue("@pro", userEntry.Pro);
-            }
-
-            
-            Console.WriteLine(command.CommandText);
+            command.Parameters.AddWithRegisterValue("@rdv", userEntry.Rdv,registerAppointment.Rdv);
+            command.Parameters.AddWithRegisterValue("@beginDate", userEntry.BeginDate,registerAppointment.BeginDate);
+            command.Parameters.AddWithRegisterValue("@endDate", userEntry.EndDate, registerAppointment.EndDate);
+            command.Parameters.AddWithRegisterValue("@description", userEntry.Description,registerAppointment.Description);
+            command.Parameters.AddWithRegisterValue("@address", userEntry.Address,registerAppointment.Address);
+            command.Parameters.AddWithRegisterValue("@contact", userEntry.Contact,registerAppointment.Contact);
+            command.Parameters.AddWithRegisterValue("@email", userEntry.Email, registerAppointment.Email);
+            command.Parameters.AddWithRegisterValue("@phone", userEntry.Phone, registerAppointment.Phone);
+            command.Parameters.AddWithRegisterValue("@importance", userEntry.Importance, registerAppointment.Importance);
+            command.Parameters.AddWithRegisterValue("@recurrence", userEntry.Recurrence, registerAppointment.Recurrence);
+            command.Parameters.AddWithRegisterValue("@frequence", userEntry.Frequence, registerAppointment.Frequence);
+            command.Parameters.AddWithRegisterValue("@numberOfRecurrence", userEntry.NumberOfRecurrence, registerAppointment.NumberOfRecurrence);
+            command.Parameters.AddWithRegisterValue("@pro", userEntry.Pro, registerAppointment.Pro);
 
             command.CommandText += " WHERE IdAppointment=@idUserEntry" + ";";
             command.Parameters.AddWithValue("@idUserEntry", userEntry.Id);
