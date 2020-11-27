@@ -54,7 +54,7 @@ function AppointmentsList({ url }) {
             <th>Contact</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Importance</th>
+            <th>Priority</th>
           </tr>
         </thead>
         <tbody>

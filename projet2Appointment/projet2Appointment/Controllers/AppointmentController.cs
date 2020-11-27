@@ -18,18 +18,10 @@ namespace projet2Appointment.Controllers
         public List<Appointment> GetAllAppointments(bool pro=false)
         {
            return DataAbstractionLayer.SelectAllAppointments();
-<<<<<<< Updated upstream
-=======
+
         }
 
-        [HttpGet("filter/")]
-        public IEnumerable<Criteria> GetProAppointments()
-        {
-            List<Appointment> listFilterPro = new List<Appointment>();
-            return DataAbstractionLayer.SelectProAppointments();
->>>>>>> Stashed changes
-        }
-
+       
         [HttpGet("filter/pro")]
         public List<Appointment> GetProAppointments()
         {

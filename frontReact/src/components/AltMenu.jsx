@@ -47,7 +47,7 @@ function AltMenu() {
           </ul>
         </li>
         <li className="deroulant">
-          <Link to="">priority</Link>
+          <Link>priority</Link>
           <ul class="sous">
             <li>
               <Link to="/importance1">low</Link>
